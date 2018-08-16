@@ -54,6 +54,9 @@
                                 <state key="normal" title="CONVERT">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="convert:" destination="ucC-Jq-Ew2" eventType="touchUpInside" id="UUD-S2-2zx"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="IEZ-1b-04J">
                                 <rect key="frame" x="15" y="155" width="290.5" height="30"/>
@@ -97,6 +100,12 @@
                         <viewLayoutGuide key="safeArea" id="T1s-u5-2G5"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Currency Change" id="hwr-2b-DJp"/>
+                    <connections>
+                        <outlet property="currencyPickerView" destination="gQc-cJ-EXI" id="iuu-Kw-8Kd"/>
+                        <outlet property="myConvertedValueLabel" destination="kcW-Tn-Ddd" id="hDK-4q-zCt"/>
+                        <outlet property="myCurrencyTextField" destination="VKb-Op-CZ2" id="MhD-34-Tre"/>
+                        <outlet property="myValueTextField" destination="jnV-Gp-zKC" id="YTp-oL-6gV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZoV-3I-reJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
