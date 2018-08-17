@@ -34,9 +34,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQc-cJ-EXI">
-                                <rect key="frame" x="0.0" y="303" width="320" height="216"/>
-                            </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency Change" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zd2-tc-G9a">
                                 <rect key="frame" x="93" y="50" width="134.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -50,7 +47,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1D-BM-rIH">
-                                <rect key="frame" x="125" y="238" width="71" height="30"/>
+                                <rect key="frame" x="125" y="269" width="71" height="30"/>
                                 <state key="normal" title="CONVERT">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -84,14 +81,11 @@
                         <constraints>
                             <constraint firstItem="T1s-u5-2G5" firstAttribute="trailing" secondItem="jnV-Gp-zKC" secondAttribute="trailing" constant="15" id="057-ba-S8B"/>
                             <constraint firstItem="T1s-u5-2G5" firstAttribute="trailing" secondItem="IEZ-1b-04J" secondAttribute="trailing" constant="15" id="A9K-n3-q5B"/>
-                            <constraint firstItem="gQc-cJ-EXI" firstAttribute="trailing" secondItem="T1s-u5-2G5" secondAttribute="trailing" id="Fzc-Je-YzQ"/>
-                            <constraint firstItem="gQc-cJ-EXI" firstAttribute="bottom" secondItem="T1s-u5-2G5" secondAttribute="bottom" id="NMg-XY-3lT"/>
                             <constraint firstItem="p1D-BM-rIH" firstAttribute="centerX" secondItem="C34-rJ-rzr" secondAttribute="centerX" id="OO3-9q-rev"/>
+                            <constraint firstItem="p1D-BM-rIH" firstAttribute="centerY" secondItem="C34-rJ-rzr" secondAttribute="centerY" id="OQB-0T-wFe"/>
                             <constraint firstItem="T1s-u5-2G5" firstAttribute="trailing" secondItem="zd2-tc-G9a" secondAttribute="trailing" constant="93" id="UzR-JV-4H7"/>
                             <constraint firstItem="IEZ-1b-04J" firstAttribute="top" secondItem="jnV-Gp-zKC" secondAttribute="bottom" constant="20" id="Wtf-tX-YYx"/>
-                            <constraint firstItem="gQc-cJ-EXI" firstAttribute="leading" secondItem="T1s-u5-2G5" secondAttribute="leading" id="dOz-jc-p73"/>
                             <constraint firstItem="zd2-tc-G9a" firstAttribute="leading" secondItem="T1s-u5-2G5" secondAttribute="leading" constant="93" id="feh-sM-EpF"/>
-                            <constraint firstItem="gQc-cJ-EXI" firstAttribute="top" secondItem="p1D-BM-rIH" secondAttribute="bottom" constant="35" id="p01-fF-tTD"/>
                             <constraint firstItem="IEZ-1b-04J" firstAttribute="leading" secondItem="T1s-u5-2G5" secondAttribute="leading" constant="15" id="p1H-7c-FIg"/>
                             <constraint firstItem="zd2-tc-G9a" firstAttribute="top" secondItem="T1s-u5-2G5" secondAttribute="top" constant="30" id="utM-dS-ZgW"/>
                             <constraint firstItem="jnV-Gp-zKC" firstAttribute="leading" secondItem="T1s-u5-2G5" secondAttribute="leading" constant="15" id="xDo-ve-VaS"/>
@@ -101,7 +95,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Currency Change" id="hwr-2b-DJp"/>
                     <connections>
-                        <outlet property="currencyPickerView" destination="gQc-cJ-EXI" id="iuu-Kw-8Kd"/>
                         <outlet property="myConvertedValueLabel" destination="kcW-Tn-Ddd" id="hDK-4q-zCt"/>
                         <outlet property="myCurrencyTextField" destination="VKb-Op-CZ2" id="MhD-34-Tre"/>
                         <outlet property="myValueTextField" destination="jnV-Gp-zKC" id="YTp-oL-6gV"/>
