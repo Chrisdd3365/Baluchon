@@ -16,21 +16,32 @@ class CurrencyChangeViewController: UIViewController {
     @IBOutlet weak var myValueTextField: UITextField!
     @IBOutlet weak var myCurrencyTextField: UITextField!
     @IBOutlet weak var myConvertedValueLabel: UILabel!
+    @IBOutlet weak var convertButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func convert(_ sender: Any) {
         if myValueTextField.text != "" {
             myConvertedValueLabel.text = String(Double(myValueTextField.text!)! * selectedCurrency)
         }
     }
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        myValueTextField.resignFirstResponder()
+        myCurrencyTextField.resignFirstResponder()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         currencyChangeService.getCurrencyChange()
+        toggleActivityIndicator(shown: false)
         createCurrencyPicker()
         createNumberPad()
-        createToolBar()
     }
     
+    func toggleActivityIndicator(shown: Bool) {
+        activityIndicator.isHidden = !shown
+        convertButton.isHidden = shown
+    }
+
     func createCurrencyPicker() {
         let currencyPicker = UIPickerView()
         currencyPicker.delegate = self
@@ -39,20 +50,6 @@ class CurrencyChangeViewController: UIViewController {
     
     func createNumberPad() {
         myValueTextField.keyboardType = UIKeyboardType.numberPad
-    }
-    
-    func createToolBar() {
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(CurrencyChangeViewController.dismissKeyboard))
-        toolBar.setItems([doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-        myValueTextField.inputAccessoryView = toolBar
-        myCurrencyTextField.inputAccessoryView = toolBar
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
     }
 }
 

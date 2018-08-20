@@ -79,27 +79,43 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Y4K-pm-wTO">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.862952430695481" blue="0.80054973151392761" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="Y4K-pm-wTO" firstAttribute="centerY" secondItem="C34-rJ-rzr" secondAttribute="centerY" id="4AE-aT-PWG"/>
                             <constraint firstItem="svv-hE-8gm" firstAttribute="leading" secondItem="T1s-u5-2G5" secondAttribute="leading" constant="20" id="Lht-TW-3R5"/>
                             <constraint firstItem="T1s-u5-2G5" firstAttribute="trailing" secondItem="svv-hE-8gm" secondAttribute="trailing" constant="20" id="ROd-qa-Va2"/>
                             <constraint firstItem="p1D-BM-rIH" firstAttribute="centerY" secondItem="C34-rJ-rzr" secondAttribute="centerY" id="T2s-kl-5aE"/>
                             <constraint firstItem="p1D-BM-rIH" firstAttribute="centerX" secondItem="C34-rJ-rzr" secondAttribute="centerX" id="cdz-V8-6Ut"/>
                             <constraint firstItem="zd2-tc-G9a" firstAttribute="top" secondItem="T1s-u5-2G5" secondAttribute="top" constant="30" id="eGe-Qt-NXj"/>
                             <constraint firstItem="zd2-tc-G9a" firstAttribute="centerX" secondItem="C34-rJ-rzr" secondAttribute="centerX" id="pPj-4y-XGw"/>
+                            <constraint firstItem="Y4K-pm-wTO" firstAttribute="centerX" secondItem="C34-rJ-rzr" secondAttribute="centerX" id="z8f-KY-0QW"/>
                             <constraint firstItem="p1D-BM-rIH" firstAttribute="top" secondItem="svv-hE-8gm" secondAttribute="bottom" constant="50" id="zc4-Eq-OpT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T1s-u5-2G5"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="j83-SY-pJm" appends="YES" id="LXc-vZ-aQd"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Currency Change" id="hwr-2b-DJp"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Y4K-pm-wTO" id="x9V-bv-vk4"/>
+                        <outlet property="convertButton" destination="p1D-BM-rIH" id="lAj-12-yQK"/>
                         <outlet property="myConvertedValueLabel" destination="kcW-Tn-Ddd" id="hDK-4q-zCt"/>
                         <outlet property="myCurrencyTextField" destination="VKb-Op-CZ2" id="MhD-34-Tre"/>
                         <outlet property="myValueTextField" destination="jnV-Gp-zKC" id="YTp-oL-6gV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZoV-3I-reJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="j83-SY-pJm">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="ucC-Jq-Ew2" id="v57-WV-oh1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-112.5" y="-1215.8450704225352"/>
         </scene>

@@ -12,13 +12,11 @@ protocol CurrencyChangeDelegate {
     func alertShow(title: String, message: String)
 }
 
-
 class CurrencyChangeService {
     
     var currencies: [String] = []
     var values: [Double] = []
     var currencyChangeDelegate: CurrencyChangeDelegate?
-    
     let currencyChangeUrl = URL(string: "http://data.fixer.io/api/latest?access_key=2e4288a2049e923be5767c9bacf7ae2a")!
     
     func getCurrencyChange() {
@@ -29,8 +27,8 @@ class CurrencyChangeService {
                     do {
                         let responseJSON = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
                         if let rates = responseJSON["rates"] as? NSDictionary {
-                            for (key, value) in rates {
-                                self.currencies.append((key as? String)!)
+                            for (currency, value) in rates {
+                                self.currencies.append((currency as? String)!)
                                 self.values.append((value as? Double)!)
                             }
                         }
