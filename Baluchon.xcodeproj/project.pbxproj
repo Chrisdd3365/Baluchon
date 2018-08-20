@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		953CBF0E212ADE8F006368CC /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953CBF0D212ADE8F006368CC /* UIViewController.swift */; };
 		956AA5302119DA44005CB9C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956AA52F2119DA44005CB9C1 /* AppDelegate.swift */; };
 		956AA5352119DA44005CB9C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956AA5332119DA44005CB9C1 /* Main.storyboard */; };
 		956AA5372119DA46005CB9C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 956AA5362119DA46005CB9C1 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		953CBF0D212ADE8F006368CC /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		956AA52C2119DA44005CB9C1 /* Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		956AA52F2119DA44005CB9C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		956AA5342119DA44005CB9C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		953CBF0C212ADE66006368CC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				953CBF0D212ADE8F006368CC /* UIViewController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		956AA5232119DA44005CB9C1 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +66,7 @@
 		956AA52E2119DA44005CB9C1 /* Baluchon */ = {
 			isa = PBXGroup;
 			children = (
+				953CBF0C212ADE66006368CC /* Extensions */,
 				956AA5422119DB1C005CB9C1 /* View */,
 				956AA5432119DB21005CB9C1 /* Controller */,
 				956AA5412119DB06005CB9C1 /* Model */,
@@ -172,6 +183,7 @@
 			files = (
 				956AA5302119DA44005CB9C1 /* AppDelegate.swift in Sources */,
 				95C5CDA02124718700B56E83 /* CurrencyChangeService.swift in Sources */,
+				953CBF0E212ADE8F006368CC /* UIViewController.swift in Sources */,
 				956AA5462119E1D6005CB9C1 /* CurrencyChangeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

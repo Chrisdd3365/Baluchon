@@ -8,50 +8,41 @@
 
 import UIKit
 
+protocol CurrencyChangeDelegate {
+    func alertShow(title: String, message: String)
+}
+
+
 class CurrencyChangeService {
     
-    var myCurrency:[String] = []
-    var myValues:[Double] = []
+    var currencies: [String] = []
+    var values: [Double] = []
+    var currencyChangeDelegate: CurrencyChangeDelegate?
     
-    let currencyChangeUrl = URL(string: "http://data.fixer.io/api/latest?access_key=2e4288a2049e923be5767c9bacf7ae2a&callback=getCurrencyChange")!
+    let currencyChangeUrl = URL(string: "http://data.fixer.io/api/latest?access_key=2e4288a2049e923be5767c9bacf7ae2a")!
     
     func getCurrencyChange() {
-        let task = URLSession.shared.dataTask(with: currencyChangeUrl) { (data, response, error) in
-            
-            if error != nil
-            {
-                print ("ERROR")
-            }
-            else
-            {
-                if let content = data
-                {
-                    do
-                    {
-                        let myJson = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                        
-                        if let rates = myJson["rates"] as? NSDictionary
-                        {
-                            for (key, value) in rates
-                            {
-                                self.myCurrency.append((key as? String)!)
-                                self.myValues.append((value as? Double)!)
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: currencyChangeUrl) { (data, response, error) in
+            if let data = data, error == nil {
+                if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                    do {
+                        let responseJSON = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                        if let rates = responseJSON["rates"] as? NSDictionary {
+                            for (key, value) in rates {
+                                self.currencies.append((key as? String)!)
+                                self.values.append((value as? Double)!)
                             }
                         }
                     }
-                    catch
-                    {
-                        
+                    catch {
+                        self.currencyChangeDelegate?.alertShow(title: "Error", message: "Currencies download failed! Try again!")
                     }
                 }
             }
+            
         }
         task.resume()
-        
     }
-    
-    
-    
-    
-    
 }
+
