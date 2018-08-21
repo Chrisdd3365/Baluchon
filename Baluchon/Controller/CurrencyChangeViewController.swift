@@ -24,6 +24,7 @@ class CurrencyChangeViewController: UIViewController {
             myConvertedValueLabel.text = String(Double(myValueTextField.text!)! * selectedCurrency)
         }
     }
+    
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         myValueTextField.resignFirstResponder()
         myCurrencyTextField.resignFirstResponder()

@@ -22,23 +22,24 @@ class CurrencyChangeService {
     func getCurrencyChange() {
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: currencyChangeUrl) { (data, response, error) in
-            if let data = data, error == nil {
-                if let response = response as? HTTPURLResponse, response.statusCode == 200 {
-                    do {
-                        let responseJSON = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                        if let rates = responseJSON["rates"] as? NSDictionary {
-                            for (currency, value) in rates {
-                                self.currencies.append((currency as? String)!)
-                                self.values.append((value as? Double)!)
+            DispatchQueue.main.async {
+                if let data = data, error == nil {
+                    if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                        do {
+                            let responseJSON = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                            if let rates = responseJSON["rates"] as? NSDictionary {
+                                for (currency, value) in rates {
+                                    self.currencies.append((currency as? String)!)
+                                    self.values.append((value as? Double)!)
+                                }
                             }
                         }
-                    }
-                    catch {
-                        self.currencyChangeDelegate?.alertShow(title: "Error", message: "Currencies download failed! Try again!")
+                        catch {
+                            self.currencyChangeDelegate?.alertShow(title: "Error", message: "Currencies download failed! Try again!")
+                        }
                     }
                 }
             }
-            
         }
         task.resume()
     }

@@ -10,21 +10,64 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Translation-->
         <scene sceneID="8TX-Gq-Z6r">
             <objects>
                 <viewController id="7Jj-hx-3pd" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yrd-Th-spT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translation" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y48-eg-JWN">
+                                <rect key="frame" x="104" y="50" width="112.5" height="27"/>
+                                <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qgb-Z9-V9Q">
+                                <rect key="frame" x="15" y="137" width="290" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3g-Zb-9QI">
+                                <rect key="frame" x="114" y="264.5" width="92" height="39"/>
+                                <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="17"/>
+                                <state key="normal" title="TRANSLATE">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBd-0R-uNy">
+                                <rect key="frame" x="15" y="187" width="290" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="xxU-XI-OEE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.86274509803921573" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="y48-eg-JWN" firstAttribute="centerX" secondItem="yrd-Th-spT" secondAttribute="centerX" id="9bp-YR-5x4"/>
+                            <constraint firstItem="y48-eg-JWN" firstAttribute="top" secondItem="A3t-EU-uZ8" secondAttribute="top" constant="30" id="Duy-34-gbm"/>
+                            <constraint firstItem="A3t-EU-uZ8" firstAttribute="trailing" secondItem="qgb-Z9-V9Q" secondAttribute="trailing" constant="15" id="IO3-Uy-s9L"/>
+                            <constraint firstItem="yBd-0R-uNy" firstAttribute="leading" secondItem="A3t-EU-uZ8" secondAttribute="leading" constant="15" id="J8g-Kw-INn"/>
+                            <constraint firstItem="qgb-Z9-V9Q" firstAttribute="top" secondItem="y48-eg-JWN" secondAttribute="bottom" constant="60" id="JpS-pe-1II"/>
+                            <constraint firstItem="a3g-Zb-9QI" firstAttribute="centerY" secondItem="yrd-Th-spT" secondAttribute="centerY" id="Jvf-h1-4eG"/>
+                            <constraint firstItem="a3g-Zb-9QI" firstAttribute="centerX" secondItem="yrd-Th-spT" secondAttribute="centerX" id="ZnF-nv-2hl"/>
+                            <constraint firstItem="A3t-EU-uZ8" firstAttribute="trailing" secondItem="yBd-0R-uNy" secondAttribute="trailing" constant="15" id="gjK-0D-MrR"/>
+                            <constraint firstItem="qgb-Z9-V9Q" firstAttribute="leading" secondItem="A3t-EU-uZ8" secondAttribute="leading" constant="15" id="lse-3p-Iax"/>
+                            <constraint firstItem="yBd-0R-uNy" firstAttribute="top" secondItem="qgb-Z9-V9Q" secondAttribute="bottom" constant="20" id="pEj-pv-63m"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="A3t-EU-uZ8"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="gkA-Fh-To0"/>
+                    <tabBarItem key="tabBarItem" title="Translation" id="gkA-Fh-To0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZp-CH-zK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-111" y="-450"/>
+            <point key="canvasLocation" x="-112.5" y="-450"/>
         </scene>
         <!--Currency Change-->
         <scene sceneID="jnJ-Oq-G4o">
@@ -83,7 +126,7 @@
                                 <rect key="frame" x="150" y="274" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.862952430695481" blue="0.80054973151392761" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.86274509803921573" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Y4K-pm-wTO" firstAttribute="centerY" secondItem="C34-rJ-rzr" secondAttribute="centerY" id="4AE-aT-PWG"/>
