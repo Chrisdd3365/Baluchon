@@ -10,18 +10,29 @@ import UIKit
 
 class CurrencyChangeViewController: UIViewController {
     
-    var currencyChangeService = CurrencyChangeService()
-    var selectedCurrency: Double = 0
-    
+    //MARK: - Outlets
     @IBOutlet weak var myValueTextField: UITextField!
     @IBOutlet weak var myCurrencyTextField: UITextField!
     @IBOutlet weak var myConvertedValueLabel: UILabel!
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBAction func convert(_ sender: Any) {
+    //MARK: - Properties
+    var selectedCurrency: Double = 0
+    
+    //MARK: - View Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        toggleActivityIndicator(shown: false)
+        createCurrencyPicker()
+        createNumberPad()
+    }
+    
+    //MARK: - Action
+    @IBAction func convert() {
         if myValueTextField.text != "" {
             myConvertedValueLabel.text = String(Double(myValueTextField.text!)! * selectedCurrency)
+            myConvertedValueLabel.text = String(format: "%.2f")
         }
     }
     
@@ -30,19 +41,12 @@ class CurrencyChangeViewController: UIViewController {
         myCurrencyTextField.resignFirstResponder()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        currencyChangeService.getCurrencyChange()
-        toggleActivityIndicator(shown: false)
-        createCurrencyPicker()
-        createNumberPad()
-    }
-    
+    //MARK: - Methods
     func toggleActivityIndicator(shown: Bool) {
         activityIndicator.isHidden = !shown
         convertButton.isHidden = shown
     }
-
+    
     func createCurrencyPicker() {
         let currencyPicker = UIPickerView()
         currencyPicker.delegate = self
@@ -58,26 +62,22 @@ extension CurrencyChangeViewController: UIPickerViewDelegate, UIPickerViewDataSo
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return currencyChangeService.currencies.count
+        return currencies.count
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return currencyChangeService.currencies[row]
+        return currencies[row]
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedCurrency = currencyChangeService.values[row]
-        myCurrencyTextField.text = currencyChangeService.currencies[row]
+        selectedCurrency = values[row]
+        myCurrencyTextField.text = currencies[row]
     }
 }
 
-extension CurrencyChangeViewController: CurrencyChangeDelegate {
-    func alertShow(title: String, message: String) {
-        updateShowAlert(title: title, message: message)
-    }
-}
+
 
 
 
