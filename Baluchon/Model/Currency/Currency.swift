@@ -13,6 +13,10 @@ struct Currency: Decodable {
     let timestamp: Double
     let base: String
     let date: String
-    let rates: Double
+    let rates: Rates
 }
 
+struct Rates: Decodable {
+    let currency: String
+    let rate: Double?
+}

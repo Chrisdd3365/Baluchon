@@ -114,8 +114,6 @@
 				9598CF6F212F4CFA00AD8E02 /* Weather */,
 				9598CF6E212F4CF400AD8E02 /* Translation */,
 				9598CF6D212F4CEE00AD8E02 /* Currency */,
-				95C5CD9F2124718700B56E83 /* CurrencyChangeService.swift */,
-				9598CF6B212D9AC400AD8E02 /* Currency.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -161,6 +159,8 @@
 		9598CF6D212F4CEE00AD8E02 /* Currency */ = {
 			isa = PBXGroup;
 			children = (
+				9598CF6B212D9AC400AD8E02 /* Currency.swift */,
+				95C5CD9F2124718700B56E83 /* CurrencyChangeService.swift */,
 			);
 			path = Currency;
 			sourceTree = "<group>";

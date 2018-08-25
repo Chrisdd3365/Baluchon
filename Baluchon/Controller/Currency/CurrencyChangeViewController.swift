@@ -18,7 +18,7 @@ class CurrencyChangeViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: - Properties
-    var selectedCurrency: Double = 0
+   
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -30,9 +30,12 @@ class CurrencyChangeViewController: UIViewController {
     
     //MARK: - Action
     @IBAction func convert() {
-        if myValueTextField.text != "" {
-            myConvertedValueLabel.text = String(Double(myValueTextField.text!)! * selectedCurrency)
-            myConvertedValueLabel.text = String(format: "%.2f")
+        CurrencyChangeService.shared.getCurrencyChange { (success, rates) in
+            if success, let rates = rates {
+                self.update(currency: rates)
+            } else {
+                self.showAlert(title: "Error", message: "Rates download failed!")
+            }
         }
     }
     
@@ -42,6 +45,13 @@ class CurrencyChangeViewController: UIViewController {
     }
     
     //MARK: - Methods
+    func update(currency: Currency) {
+        if myValueTextField.text != "" {
+            myConvertedValueLabel.text = String(Double(myValueTextField.text!)! * (currency.rates?.rate)!)
+            myConvertedValueLabel.text = String(format: "%.2f")
+        }
+    }
+    
     func toggleActivityIndicator(shown: Bool) {
         activityIndicator.isHidden = !shown
         convertButton.isHidden = shown
@@ -64,16 +74,15 @@ extension CurrencyChangeViewController: UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return currencies.count
+        return CurrencyChangeService.shared.currencies.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return currencies[row]
+        return CurrencyChangeService.shared.currencies[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedCurrency = values[row]
-        myCurrencyTextField.text = currencies[row]
+        myCurrencyTextField.text = CurrencyChangeService.shared.currencies[row]
     }
 }
 
