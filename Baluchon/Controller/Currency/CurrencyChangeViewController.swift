@@ -18,24 +18,21 @@ class CurrencyChangeViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: - Properties
-   
+    var selectedCurrency: Double = 0
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        toggleActivityIndicator(shown: false)
+        currencyChange()
         createCurrencyPicker()
         createNumberPad()
     }
     
     //MARK: - Action
     @IBAction func convert() {
-        CurrencyChangeService.shared.getCurrencyChange { (success, rates) in
-            if success, let rates = rates {
-                self.update(currency: rates)
-            } else {
-                self.showAlert(title: "Error", message: "Rates download failed!")
-            }
+        if myValueTextField.text != "" {
+            myConvertedValueLabel.text = String(Double(myValueTextField.text!)! * selectedCurrency)
+            myConvertedValueLabel.text = String(format: "%.2f")
         }
     }
     
@@ -45,10 +42,14 @@ class CurrencyChangeViewController: UIViewController {
     }
     
     //MARK: - Methods
-    func update(currency: Currency) {
-        if myValueTextField.text != "" {
-            myConvertedValueLabel.text = String(Double(myValueTextField.text!)! * (currency.rates?.rate)!)
-            myConvertedValueLabel.text = String(format: "%.2f")
+    func currencyChange() {
+        CurrencyChangeService.shared.getCurrencyChange { (success, rate) in
+            self.toggleActivityIndicator(shown: true)
+            if success {
+                self.toggleActivityIndicator(shown: false)
+            } else {
+                self.showAlert(title: "Error", message: "Rates download failed!")
+            }
         }
     }
     
@@ -57,14 +58,14 @@ class CurrencyChangeViewController: UIViewController {
         convertButton.isHidden = shown
     }
     
+    func createNumberPad() {
+        myValueTextField.keyboardType = UIKeyboardType.numberPad
+    }
+    
     func createCurrencyPicker() {
         let currencyPicker = UIPickerView()
         currencyPicker.delegate = self
         myCurrencyTextField.inputView = currencyPicker
-    }
-    
-    func createNumberPad() {
-        myValueTextField.keyboardType = UIKeyboardType.numberPad
     }
 }
 
@@ -82,6 +83,7 @@ extension CurrencyChangeViewController: UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedCurrency = CurrencyChangeService.shared.rate[row]
         myCurrencyTextField.text = CurrencyChangeService.shared.currencies[row]
     }
 }

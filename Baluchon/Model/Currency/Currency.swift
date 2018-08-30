@@ -9,14 +9,12 @@
 import Foundation
 
 struct Currency: Decodable {
-    let success: Bool
-    let timestamp: Double
-    let base: String
-    let date: String
-    let rates: Rates
+    let rates: [String: Double]?
 }
 
-struct Rates: Decodable {
-    let currency: String
-    let rate: Double?
-}
+
+
+
+
+
+
