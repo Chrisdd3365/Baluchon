@@ -23,16 +23,18 @@ class CurrencyChangeViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        myValueTextField.delegate = self
+        myCurrencyTextField.delegate = self
+        convertButton.isEnabled = false
         currencyChange()
         createCurrencyPicker()
         createNumberPad()
     }
-    
     //MARK: - Action
     @IBAction func convert() {
         if myValueTextField.text != "" {
-            myConvertedValueLabel.text = String(Double(myValueTextField.text!)! * selectedCurrency)
-            myConvertedValueLabel.text = String(format: "%.2f")
+            let result = Double(myValueTextField.text!)! * selectedCurrency
+            myConvertedValueLabel.text = String(format: "%.2f", result)
         }
     }
     
@@ -57,7 +59,7 @@ class CurrencyChangeViewController: UIViewController {
         activityIndicator.isHidden = !shown
         convertButton.isHidden = shown
     }
-    
+
     func createNumberPad() {
         myValueTextField.keyboardType = UIKeyboardType.numberPad
     }
@@ -89,6 +91,15 @@ extension CurrencyChangeViewController: UIPickerViewDelegate, UIPickerViewDataSo
     }
 }
 
+extension CurrencyChangeViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if myValueTextField.hasText && myCurrencyTextField.hasText {
+            convertButton.isEnabled = true
+        } else {
+            convertButton.isEnabled = false
+        }
+    }
+}
 
 
 

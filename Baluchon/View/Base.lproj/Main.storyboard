@@ -89,8 +89,11 @@
                                 <state key="normal" title="CONVERT">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="1" green="0.12771455744535753" blue="0.11696253050951211" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
-                                    <action selector="convert:" destination="ucC-Jq-Ew2" eventType="touchUpInside" id="UUD-S2-2zx"/>
+                                    <action selector="convert" destination="ucC-Jq-Ew2" eventType="touchUpInside" id="1SU-bR-nwZ"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="svv-hE-8gm">
@@ -122,7 +125,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Y4K-pm-wTO">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Y4K-pm-wTO">
                                 <rect key="frame" x="150" y="274" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
@@ -147,10 +150,10 @@
                     <tabBarItem key="tabBarItem" title="Currency Change" id="hwr-2b-DJp"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Y4K-pm-wTO" id="x9V-bv-vk4"/>
-                        <outlet property="convertButton" destination="p1D-BM-rIH" id="lAj-12-yQK"/>
+                        <outlet property="convertButton" destination="p1D-BM-rIH" id="Jbv-JM-eGo"/>
                         <outlet property="myConvertedValueLabel" destination="kcW-Tn-Ddd" id="hDK-4q-zCt"/>
-                        <outlet property="myCurrencyTextField" destination="VKb-Op-CZ2" id="MhD-34-Tre"/>
-                        <outlet property="myValueTextField" destination="jnV-Gp-zKC" id="YTp-oL-6gV"/>
+                        <outlet property="myCurrencyTextField" destination="VKb-Op-CZ2" id="fqL-a3-EZp"/>
+                        <outlet property="myValueTextField" destination="jnV-Gp-zKC" id="dVn-Gn-bg8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZoV-3I-reJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
