@@ -153,7 +153,7 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9598CF62212D7C0600AD8E02 /* BaluchonTests */ = {
+		958425B5213D746E002C1B4E /* Currency */ = {
 			isa = PBXGroup;
 			children = (
 				9598CF63212D7C0600AD8E02 /* CurrencyChangeServiceTests.swift */,
@@ -161,6 +161,14 @@
 				9598CF65212D7C0600AD8E02 /* Info.plist */,
 				95D9184B21357003002730B1 /* FakeResponseData.swift */,
 				95D9184D2135762C002730B1 /* URLSessionFake.swift */,
+			);
+			path = Currency;
+			sourceTree = "<group>";
+		};
+		9598CF62212D7C0600AD8E02 /* BaluchonTests */ = {
+			isa = PBXGroup;
+			children = (
+				958425B5213D746E002C1B4E /* Currency */,
 			);
 			path = BaluchonTests;
 			sourceTree = "<group>";
