@@ -81,7 +81,6 @@ extension CurrencyChangeViewController: UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        CurrencyChangeService.shared.currencies.sort()
         return CurrencyChangeService.shared.currencies[row]
     }
     

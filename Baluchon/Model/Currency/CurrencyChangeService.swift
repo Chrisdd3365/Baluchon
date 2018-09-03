@@ -40,7 +40,7 @@ class CurrencyChangeService {
                     callback(false, nil)
                     return
                 }
-                for (key, value) in responseJSON.rates! {
+                for (key, value) in Array(responseJSON.rates!.sorted(by: {$0.0 < $1.0})) {
                     self.currencies.append(key)
                     self.rate.append(value)
                 }
