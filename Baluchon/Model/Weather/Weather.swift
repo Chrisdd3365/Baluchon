@@ -9,6 +9,7 @@
 import Foundation
 
 struct Weather: Decodable {
+    let code: String?
     let date: String?
     let temp: String?
     let text: String?

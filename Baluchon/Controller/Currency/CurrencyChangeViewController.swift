@@ -23,9 +23,7 @@ class CurrencyChangeViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        myValueTextField.delegate = self
-        myCurrencyTextField.delegate = self
-        convertButton.isEnabled = false
+        textFieldDelegate()
         currencyChange()
         createCurrencyPicker()
         createNumberPad()
@@ -68,6 +66,12 @@ class CurrencyChangeViewController: UIViewController {
         let currencyPicker = UIPickerView()
         currencyPicker.delegate = self
         myCurrencyTextField.inputView = currencyPicker
+    }
+    
+    func textFieldDelegate() {
+        myValueTextField.delegate = self
+        myCurrencyTextField.delegate = self
+        convertButton.isEnabled = false
     }
 }
 
