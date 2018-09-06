@@ -13,14 +13,11 @@ class CurrencyChangeService {
     var currencies = [String]()
     var rate = [Double]()
 
-    static var shared = CurrencyChangeService()
-    private init() {}
-    
     private static let currencyChangeUrl = URL(string: "http://data.fixer.io/api/latest?access_key=2e4288a2049e923be5767c9bacf7ae2a")!
     var task: URLSessionDataTask?
-    private var currencySession = URLSession(configuration: .default)
+    private var currencySession: URLSession
     
-    init(currencySession: URLSession) {
+    init(currencySession: URLSession = URLSession(configuration: .default)) {
         self.currencySession = currencySession
     }
     
@@ -40,7 +37,7 @@ class CurrencyChangeService {
                     callback(false, nil)
                     return
                 }
-                for (key, value) in Array(responseJSON.rates!.sorted(by: {$0.0 < $1.0})) {
+                for (key, value) in Array(responseJSON.rates.sorted(by: {$0.0 < $1.0})) {
                     self.currencies.append(key)
                     self.rate.append(value)
                 }

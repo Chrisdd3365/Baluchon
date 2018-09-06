@@ -19,6 +19,7 @@ class CurrencyChangeViewController: UIViewController {
     
     //MARK: - Properties
     var selectedCurrency: Double = 0
+    let currencyChangeService = CurrencyChangeService()
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -31,8 +32,11 @@ class CurrencyChangeViewController: UIViewController {
     //MARK: - Action
     @IBAction func convert() {
         if myValueTextField.text != "" {
-            let result = Double(myValueTextField.text!)! * selectedCurrency
-            myConvertedValueLabel.text = String(format: "%.2f", result)
+            var total: Double = 0
+            guard let valueTextField = myValueTextField.text else { return }
+            guard let result = Double(valueTextField) else { return }
+            total = result * selectedCurrency
+            myConvertedValueLabel.text = String(format: "%.2f", total)
         }
     }
     
@@ -43,7 +47,7 @@ class CurrencyChangeViewController: UIViewController {
     
     //MARK: - Methods
     func currencyChange() {
-        CurrencyChangeService.shared.getCurrencyChange { (success, rate) in
+        currencyChangeService.getCurrencyChange { (success, rate) in
             self.toggleActivityIndicator(shown: true)
             if success {
                 self.toggleActivityIndicator(shown: false)
@@ -73,6 +77,12 @@ class CurrencyChangeViewController: UIViewController {
         myCurrencyTextField.delegate = self
         convertButton.isEnabled = false
     }
+    
+    func clearConvertedValueLabel() {
+        if myValueTextField.text == "" || myCurrencyTextField.text == "" {
+            myConvertedValueLabel.text = nil
+        }
+    }
 }
 
 extension CurrencyChangeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -81,16 +91,23 @@ extension CurrencyChangeViewController: UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return CurrencyChangeService.shared.currencies.count
+        return currencyChangeService.currencies.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return CurrencyChangeService.shared.currencies[row]
+        return currencyChangeService.currencies[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedCurrency = CurrencyChangeService.shared.rate[row]
-        myCurrencyTextField.text = CurrencyChangeService.shared.currencies[row]
+        selectedCurrency = currencyChangeService.rate[row]
+        myCurrencyTextField.text = currencyChangeService.currencies[row]
+        if myCurrencyTextField.text == currencyChangeService.currencies[row] {
+            var total: Double = 0
+            guard let valueTextField = myValueTextField.text else { return }
+            guard let result = Double(valueTextField) else { return }
+            total = result * selectedCurrency
+            myConvertedValueLabel.text = String(format: "%.2f", total)
+        }
     }
 }
 
@@ -100,6 +117,7 @@ extension CurrencyChangeViewController: UITextFieldDelegate {
             convertButton.isEnabled = true
         } else {
             convertButton.isEnabled = false
+            clearConvertedValueLabel()
         }
     }
 }

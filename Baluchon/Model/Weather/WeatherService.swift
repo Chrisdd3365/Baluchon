@@ -17,15 +17,18 @@ class WeatherService {
     private static let weatherParisUrl = URL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%20615702&format=json")!
 
     var task: URLSessionDataTask?
-    private var weatherSession = URLSession(configuration: .default)
-
-    init(weatherSession: URLSession) {
-        self.weatherSession = weatherSession
+    
+    private var foreignerWeatherSession = URLSession(configuration: .default)
+    private var localWeatherSession = URLSession(configuration: .default)
+    
+    init(foreignerWeatherSession: URLSession, localWeatherSession: URLSession) {
+        self.foreignerWeatherSession = foreignerWeatherSession
+        self.localWeatherSession = localWeatherSession
     }
 
     func getWeatherForeignerCountry(callback: @escaping (Bool, Weather?) -> Void) {
         task?.cancel()
-        task = weatherSession.dataTask(with: WeatherService.weatherNewYorkUrl) { data, response, error in
+        task = foreignerWeatherSession.dataTask(with: WeatherService.weatherNewYorkUrl) { data, response, error in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callback(false, nil)
@@ -47,7 +50,7 @@ class WeatherService {
 
     func getWeatherLocalCountry(callback: @escaping (Bool, Weather?) -> Void) {
         task?.cancel()
-        task = weatherSession.dataTask(with: WeatherService.weatherParisUrl) { data, response, error in
+        task = localWeatherSession.dataTask(with: WeatherService.weatherParisUrl) { data, response, error in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callback(false, nil)

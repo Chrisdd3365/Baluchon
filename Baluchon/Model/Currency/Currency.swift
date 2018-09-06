@@ -9,7 +9,7 @@
 import Foundation
 
 struct Currency: Decodable {
-    let rates: [String: Double]?
+    let rates: [String: Double]
 }
 
 

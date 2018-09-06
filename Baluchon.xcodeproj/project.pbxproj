@@ -86,6 +86,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		95415FAD214176EF0079BB01 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				958425B5213D746E002C1B4E /* Currency */,
+				95687C45213EBE1400BD900B /* Weather */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		95687C45213EBE1400BD900B /* Weather */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,7 +176,6 @@
 			children = (
 				9598CF63212D7C0600AD8E02 /* CurrencyChangeServiceTests.swift */,
 				95D9184921356FC0002730B1 /* Currency.json */,
-				9598CF65212D7C0600AD8E02 /* Info.plist */,
 				95D9184B21357003002730B1 /* FakeResponseData.swift */,
 				95D9184D2135762C002730B1 /* URLSessionFake.swift */,
 			);
@@ -177,8 +185,8 @@
 		9598CF62212D7C0600AD8E02 /* BaluchonTests */ = {
 			isa = PBXGroup;
 			children = (
-				95687C45213EBE1400BD900B /* Weather */,
-				958425B5213D746E002C1B4E /* Currency */,
+				95415FAD214176EF0079BB01 /* Model */,
+				9598CF65212D7C0600AD8E02 /* Info.plist */,
 			);
 			path = BaluchonTests;
 			sourceTree = "<group>";
