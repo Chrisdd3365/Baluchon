@@ -17,6 +17,8 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var localTemperature: UILabel!
     @IBOutlet weak var localWeatherImage: UIImageView!
     
+    var weatherService = WeatherService()
+    
 //    func weather() {
 //        WeatherService.shared.getWeatherForeignerCountry { (success, foreignerWeather) in
 //            if success, let foreignerWeather =  foreignerWeather {

@@ -33,15 +33,15 @@ class CurrencyChangeService {
                     callback(false, nil)
                     return
                 }
-                guard let responseJSON = try? JSONDecoder().decode(Currency.self, from: data) else {
+                guard let currencyResponseJSON = try? JSONDecoder().decode(Currency.self, from: data) else {
                     callback(false, nil)
                     return
                 }
-                for (key, value) in Array(responseJSON.rates.sorted(by: {$0.0 < $1.0})) {
+                for (key, value) in Array(currencyResponseJSON.rates.sorted(by: {$0.0 < $1.0})) {
                     self.currencies.append(key)
                     self.rate.append(value)
                 }
-                callback(true, responseJSON)
+                callback(true, currencyResponseJSON)
             }
         }
         task?.resume()

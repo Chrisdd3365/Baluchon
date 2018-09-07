@@ -15,29 +15,6 @@ class CurrencyChangeServiceTests: XCTestCase {
         super.setUp()
     }
     
-//    func testDownloadWebData() {
-//
-//        // On crée l'expectation en lui donnant une simple description.
-//        let expectation = XCTestExpectation(description: "Télécharge les taux de change à partir de l'api Fixer")
-//
-//        // On prépare une requête
-//        let url = URL(string: "http://data.fixer.io/api/latest?access_key=2e4288a2049e923be5767c9bacf7ae2a")!
-//        let dataTask = URLSession(configuration: .default).dataTask(with: url) { (data, response, error) in
-//
-//            // On vérifie qu'il y a bien des données qui ont été chargées, c'est ici que le test a lieu.
-//            XCTAssertNotNil(data)
-//
-//            // On déclare que l'expectation est terminée, on peut clore le test.
-//            expectation.fulfill()
-//        }
-//
-//        // On lance la requête.
-//        dataTask.resume()
-//
-//        // On attend que l'expectation soit terminée, avec une durée maximum de 10 secondes.
-//        wait(for: [expectation], timeout: 10.0)
-//    }
-    
     func testGetCurrencyChangeShouldGetFailedCallbackIfError() {
         // Given
         let currencyChangeService = CurrencyChangeService(
@@ -90,7 +67,7 @@ class CurrencyChangeServiceTests: XCTestCase {
         // Given
         let currencyChangeService = CurrencyChangeService(
             currencySession: URLSessionFake(
-                data: FakeResponseData.currencyCorrectData,
+                data: FakeCurrencyResponseData.currencyCorrectData,
                 response: FakeResponseData.responseKO,
                 error: nil))
         
@@ -128,7 +105,7 @@ class CurrencyChangeServiceTests: XCTestCase {
         // Given
         let currencyChangeService = CurrencyChangeService(
             currencySession: URLSessionFake(
-                data: FakeResponseData.currencyCorrectData,
+                data: FakeCurrencyResponseData.currencyCorrectData,
                 response: FakeResponseData.responseOK,
                 error: nil))
 
