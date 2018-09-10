@@ -33,9 +33,14 @@ struct WeatherConditions: Decodable {
     let temp: String
 }
 
-struct WeatherStruct {
+struct WeatherCodeAndTemp {
     var newYorkTemp: String
     var newYorkCode: String
     var parisTemp: String
     var parisCode: String
 }
+
+enum Forecast {
+    case tornado, thunderstorm, snow, sleet, rain, hail, fog, wind, cloudy, partlyCloudyNight, partlyCloudyDay, clearNight, clearDay, error
+}
+

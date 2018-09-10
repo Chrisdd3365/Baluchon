@@ -72,7 +72,7 @@
         <!--Weather-->
         <scene sceneID="22l-wT-3lJ">
             <objects>
-                <viewController id="JTe-GL-shn" sceneMemberID="viewController">
+                <viewController id="JTe-GL-shn" customClass="WeatherViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OGN-ok-2bo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,8 +83,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63C-6p-Y19">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7QH-Wi-d4C">
-                                                <rect key="frame" x="40" y="85" width="240" height="80"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7QH-Wi-d4C">
+                                                <rect key="frame" x="25" y="85" width="270" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paris" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCq-Zv-sML">
                                                         <rect key="frame" x="0.0" y="30" width="80" height="20.5"/>
@@ -92,14 +92,14 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbO-QG-Mt8">
-                                                        <rect key="frame" x="80" y="30" width="80" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbO-QG-Mt8">
+                                                        <rect key="frame" x="95" y="15" width="80" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qYj-6r-RdE">
-                                                        <rect key="frame" x="160" y="0.0" width="80" height="80"/>
+                                                        <rect key="frame" x="190" y="0.0" width="80" height="80"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
@@ -113,8 +113,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubX-Iv-Tqj">
                                         <rect key="frame" x="0.0" y="250" width="320" height="249"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4N0-wH-aXa">
-                                                <rect key="frame" x="40" y="84.5" width="240" height="80"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4N0-wH-aXa">
+                                                <rect key="frame" x="30" y="84.5" width="260" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New York" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUF-4m-R2q">
                                                         <rect key="frame" x="0.0" y="30" width="80" height="20.5"/>
@@ -122,14 +122,14 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch1-9j-sMh">
-                                                        <rect key="frame" x="80" y="30" width="80" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch1-9j-sMh">
+                                                        <rect key="frame" x="90" y="15" width="80" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5k4-S0-T04">
-                                                        <rect key="frame" x="160" y="0.0" width="80" height="80"/>
+                                                        <rect key="frame" x="180" y="0.0" width="80" height="80"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
@@ -156,6 +156,14 @@
                         <viewLayoutGuide key="safeArea" id="CGU-bM-XiU"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Weather" id="Tl3-Iz-GZ1"/>
+                    <connections>
+                        <outlet property="foreignerCityNameLabel" destination="rUF-4m-R2q" id="anZ-rK-XhN"/>
+                        <outlet property="foreignerTemperatureLabel" destination="ch1-9j-sMh" id="QPl-Rm-OCb"/>
+                        <outlet property="foreignerWeatherImage" destination="5k4-S0-T04" id="fFk-xv-gcD"/>
+                        <outlet property="localCityNameLabel" destination="SCq-Zv-sML" id="II1-CZ-k5o"/>
+                        <outlet property="localTemperatureLabel" destination="AbO-QG-Mt8" id="fQA-cS-6BG"/>
+                        <outlet property="localWeatherImage" destination="qYj-6r-RdE" id="OfH-Hm-yGe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3BV-1U-IdZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

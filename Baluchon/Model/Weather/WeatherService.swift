@@ -10,24 +10,7 @@ import Foundation
 
 class WeatherService {
     
-    static let tornado = ["0", "1", "2"]
-    static let thunderstorm = ["3", "4", "37", "38", "39", "45"]
-    static let snow = ["5", "7", "13", "14", "15", "16", "41", "42", "43", "46", "47"]
-    static let sleet = ["6", "18"]
-    static let rain = ["8", "9", "10", "11", "12", "35", "40"]
-    static let hail = ["17"]
-    static let fog = ["19", "20", "21", "22", "23"]
-    static let wind = ["24"]
-    static let cloudy = ["26", "44"]
-    static let partlyCloudyNight = ["27", "29"]
-    static let partlyCloudyDay = ["28", "30"]
-    static let clearNight = ["31", "33"]
-    static let clearDay = ["32", "34", "36"]
-    static let error = ["3200"]
-    
-    let weather: [(String, [String])] = [("tornado", tornado), ("thunderstorm", thunderstorm), ("snow", snow),("sleet", sleet), ("rain", rain), ("hail", hail), ("fog", fog), ("wind", wind), ("cloudy", cloudy), ("partly-cloudy-night", partlyCloudyNight), ("partly-cloudy-day", partlyCloudyDay), ("clear-night", clearNight), ("clear-day", clearDay), ("error", error)]
-    
-    private static let weatherParisUrl = URL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%20615702&u=c&format=json")!
+    private static let weatherParisUrl = URL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%20615702&format=json")!
     private static let weatherNewYorkUrl = URL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202459115&format=json")!
     
     var task: URLSessionDataTask?
@@ -40,7 +23,7 @@ class WeatherService {
         self.weatherLocalSession = weatherLocalSession
     }
     
-    func getForeignerWeather(callback: @escaping (Bool, WeatherStruct?) -> Void) {
+    func getForeignerWeather(callback: @escaping (Bool, WeatherCodeAndTemp?) -> Void) {
         task?.cancel()
         task = weatherForeignerSession.dataTask(with: WeatherService.weatherNewYorkUrl) { data, response, error in
             DispatchQueue.main.async {
@@ -66,7 +49,7 @@ class WeatherService {
                     }
                     let localCode = localWeather.query.results.channel.item.condition.code
                     let localTemp = localWeather.query.results.channel.item.condition.temp
-                    let weatherJSON = WeatherStruct(newYorkTemp: foreignerTemp, newYorkCode: foreignerCode, parisTemp: localTemp, parisCode: localCode)
+                    let weatherJSON = WeatherCodeAndTemp(newYorkTemp: foreignerTemp, newYorkCode: foreignerCode, parisTemp: localTemp, parisCode: localCode)
                     callback (true, weatherJSON)
                 })
             }
