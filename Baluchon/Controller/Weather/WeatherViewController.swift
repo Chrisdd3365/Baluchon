@@ -19,20 +19,7 @@ class WeatherViewController: UIViewController {
     
     var weatherService = WeatherService()
     
-//    func weather() {
-//        WeatherService.shared.getWeatherForeignerCountry { (success, foreignerWeather) in
-//            if success, let foreignerWeather =  foreignerWeather {
-//
-//            } else {
-//                self.showAlert(title: "Error", message: "Weather's data download failed!")
-//            }
-//        }
-//    }
-    
-//    func updateWeather(foreignerWeather: Weather) {
-//        
-//        
-//    }
+
     
     
     

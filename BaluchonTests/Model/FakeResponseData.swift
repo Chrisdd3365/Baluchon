@@ -10,7 +10,7 @@ import Foundation
 
 class FakeResponseData {
     
-    static let currencyIncorrectData = "error".data(using: .utf8)!
+    static let incorrectData = "error".data(using: .utf8)!
     
     static let responseOK = HTTPURLResponse(
         url: URL(string: "https://openclassrooms.com")!,
@@ -20,8 +20,8 @@ class FakeResponseData {
         url: URL(string: "https://openclassrooms.com")!,
         statusCode: 500, httpVersion: nil, headerFields: [:])!
     
-    class CurrencyError: Error {}
-    static let error = CurrencyError()
+    class AllTypeOfError: Error {}
+    static let error = AllTypeOfError()
 }
 
 class FakeCurrencyResponseData: FakeResponseData {

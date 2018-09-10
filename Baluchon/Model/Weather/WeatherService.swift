@@ -27,17 +27,17 @@ class WeatherService {
     
     let weather: [(String, [String])] = [("tornado", tornado), ("thunderstorm", thunderstorm), ("snow", snow),("sleet", sleet), ("rain", rain), ("hail", hail), ("fog", fog), ("wind", wind), ("cloudy", cloudy), ("partly-cloudy-night", partlyCloudyNight), ("partly-cloudy-day", partlyCloudyDay), ("clear-night", clearNight), ("clear-day", clearDay), ("error", error)]
     
-    private static let weatherParisUrl = URL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%20 615702&u=c&format=json")!
+    private static let weatherParisUrl = URL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%20615702&u=c&format=json")!
     private static let weatherNewYorkUrl = URL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202459115&format=json")!
     
     var task: URLSessionDataTask?
     
-    private var weatherLocalSession = URLSession(configuration: .default)
     private var weatherForeignerSession = URLSession(configuration: .default)
+    private var weatherLocalSession = URLSession(configuration: .default)
     
-    init(weatherLocalSession: URLSession = URLSession(configuration: .default), weatherForeignerSession: URLSession = URLSession(configuration: .default)) {
-        self.weatherLocalSession = weatherLocalSession
+    init(weatherForeignerSession: URLSession = URLSession(configuration: .default), weatherLocalSession: URLSession = URLSession(configuration: .default)) {
         self.weatherForeignerSession = weatherForeignerSession
+        self.weatherLocalSession = weatherLocalSession
     }
     
     func getForeignerWeather(callback: @escaping (Bool, WeatherStruct?) -> Void) {

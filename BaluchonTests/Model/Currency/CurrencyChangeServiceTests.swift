@@ -86,7 +86,7 @@ class CurrencyChangeServiceTests: XCTestCase {
         // Given
         let currencyChangeService = CurrencyChangeService(
             currencySession: URLSessionFake(
-                data: FakeResponseData.currencyIncorrectData,
+                data: FakeResponseData.incorrectData,
                 response: FakeResponseData.responseOK,
                 error: nil))
         
