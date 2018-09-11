@@ -11,10 +11,6 @@ import XCTest
 
 class WeatherServiceTests: XCTestCase {
         
-    override func setUp() {
-        super.setUp()
-    }
-    
     func testGetForeignerWeatherShouldGetFailedCallback() {
         // Given
         let weatherService = WeatherService(
@@ -23,7 +19,7 @@ class WeatherServiceTests: XCTestCase {
         
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        weatherService.getForeignerWeather { (success, weather) in
+        weatherService.getForeignerWeather(city: .newYork) { (success, weather) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(weather)
@@ -40,7 +36,7 @@ class WeatherServiceTests: XCTestCase {
         
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        weatherService.getForeignerWeather { (success, weather) in
+        weatherService.getForeignerWeather(city: .newYork) { (success, weather) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(weather)
@@ -60,7 +56,7 @@ class WeatherServiceTests: XCTestCase {
         
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        weatherService.getForeignerWeather { (success, weather) in
+        weatherService.getForeignerWeather(city: .newYork) { (success, weather) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(weather)
@@ -80,7 +76,7 @@ class WeatherServiceTests: XCTestCase {
         
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-       weatherService.getForeignerWeather { (success, weather) in
+        weatherService.getForeignerWeather(city: .newYork) { (success, weather) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(weather)
@@ -97,7 +93,7 @@ class WeatherServiceTests: XCTestCase {
         
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        weatherService.getLocalWeather { (success, weather) in
+        weatherService.getLocalWeather(city: .newYork) { (success, weather) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(weather)
@@ -117,7 +113,7 @@ class WeatherServiceTests: XCTestCase {
         
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        weatherService.getForeignerWeather { (success, weather) in
+        weatherService.getForeignerWeather(city: .newYork) { (success, weather) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(weather)
@@ -140,7 +136,7 @@ class WeatherServiceTests: XCTestCase {
         
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        weatherService.getForeignerWeather { (success, weather) in
+        weatherService.getForeignerWeather(city: .newYork) { (success, weather) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(weather)
@@ -163,7 +159,7 @@ class WeatherServiceTests: XCTestCase {
         
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        weatherService.getForeignerWeather { (success, weather) in
+        weatherService.getForeignerWeather(city: .newYork) { (success, weather) in
             // Then
             XCTAssertFalse(success)
             XCTAssertNil(weather)
@@ -186,7 +182,7 @@ class WeatherServiceTests: XCTestCase {
 
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
-        weatherService.getForeignerWeather { (success, weather) in
+        weatherService.getForeignerWeather(city: .newYork) { (success, weather) in
             // Then
             XCTAssertTrue(success)
             XCTAssertNotNil(weather)

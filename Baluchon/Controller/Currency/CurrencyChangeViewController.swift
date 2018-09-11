@@ -101,13 +101,6 @@ extension CurrencyChangeViewController: UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCurrency = currencyChangeService.rate[row]
         myCurrencyTextField.text = currencyChangeService.currencies[row]
-//        if myCurrencyTextField.text == currencyChangeService.currencies[row] {
-//            var total: Double = 0
-//            guard let valueTextField = myValueTextField.text else { return }
-//            guard let result = Double(valueTextField) else { return }
-//            total = result * selectedCurrency
-//            myConvertedValueLabel.text = String(format: "%.2f", total)
-//        }
     }
 }
 

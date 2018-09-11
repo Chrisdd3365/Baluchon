@@ -12,8 +12,7 @@ class CurrencyChangeService {
     
     var currencies = [String]()
     var rate = [Double]()
-
-    private static let currencyChangeUrl = URL(string: "http://data.fixer.io/api/latest?access_key=2e4288a2049e923be5767c9bacf7ae2a")!
+    
     var task: URLSessionDataTask?
     private var currencySession: URLSession
     
@@ -22,8 +21,11 @@ class CurrencyChangeService {
     }
     
     func getCurrencyChange(callback: @escaping (Bool, Currency?) -> Void) {
+        let fixerUrlString = FixerAPI.baseURL + FixerAPI.key
+        guard let url = URL(string: fixerUrlString) else { return }
+        
         task?.cancel()
-        task = currencySession.dataTask(with: CurrencyChangeService.currencyChangeUrl) { data, response, error in
+        task = currencySession.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callback(false, nil)

@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum Forecast {
+    case tornado, thunderstorm, snow, sleet, rain, hail, fog, wind, cloudy, partlyCloudyNight, partlyCloudyDay, clearNight, clearDay, error
+}
+
 class WeatherViewController: UIViewController {
 
     @IBOutlet weak var foreignerCityNameLabel: UILabel!
@@ -42,7 +46,7 @@ class WeatherViewController: UIViewController {
     }
     
     func showWeather() {
-        weatherService.getForeignerWeather { (success, weather) in
+        weatherService.getForeignerWeather(city: .newYork) { (success, weather) in
             if success, let weather = weather {
                 self.updateTempLabel(weatherTemp: weather)
                 //self.updateIconForecast(weatherCode: weather)
@@ -51,76 +55,76 @@ class WeatherViewController: UIViewController {
             }
         }
     }
-    
+
     func updateTempLabel(weatherTemp: WeatherCodeAndTemp) {
-        foreignerTemperatureLabel.text = weatherTemp.newYorkTemp
-        localTemperatureLabel.text = weatherTemp.parisTemp
+        foreignerTemperatureLabel.text = weatherTemp.newYorkTemp + "°C"
+        localTemperatureLabel.text = weatherTemp.parisTemp + "°C"
     }
     
-    func updateIconForecast(weatherCode: WeatherCodeAndTemp, forecast: Forecast) {
-        let index = 0
-
-        switch forecast {
-            //case .tornado:
-
-            // case .thunderstorm:
-
-        case .snow:
-            if weather[3] == weather[3] {
-                foreignerWeatherImage.image = #imageLiteral(resourceName: "snow")
-                localWeatherImage.image = #imageLiteral(resourceName: "snow")
-            }
-            //case .sleet:
-
-        case .rain:
-            if weather[index] == weather[5] {
-                foreignerWeatherImage.image = #imageLiteral(resourceName: "rain")
-                localWeatherImage.image = #imageLiteral(resourceName: "rain")
-            }
-            //case .hail:
-
-        case .fog:
-            if weather[index] == weather[7] {
-                foreignerWeatherImage.image = #imageLiteral(resourceName: "fog")
-                localWeatherImage.image = #imageLiteral(resourceName: "fog")
-            }
-        case .wind:
-            if weather[index] == weather[8] {
-                foreignerWeatherImage.image = #imageLiteral(resourceName: "wind")
-                localWeatherImage.image = #imageLiteral(resourceName: "wind")
-            }
-        case .cloudy:
-            if weather[index] == weather[9] {
-                foreignerWeatherImage.image = #imageLiteral(resourceName: "cloudy")
-                localWeatherImage.image = #imageLiteral(resourceName: "cloudy")
-            }
-        case .partlyCloudyNight:
-            if weather[index] == weather[10] {
-                foreignerWeatherImage.image = #imageLiteral(resourceName: "partly-cloudy-night")
-                localWeatherImage.image = #imageLiteral(resourceName: "partly-cloudy-night")
-            }
-        case .partlyCloudyDay:
-            if weather[index] == weather[11] {
-                foreignerWeatherImage.image = #imageLiteral(resourceName: "partly-cloudy-day")
-                localWeatherImage.image = #imageLiteral(resourceName: "partly-cloudy-day")
-            }
-        case .clearNight:
-            if weather[index] == weather[12] {
-                foreignerWeatherImage.image = #imageLiteral(resourceName: "clear-night")
-                localWeatherImage.image = #imageLiteral(resourceName: "clear-night")
-            }
-        case .clearDay:
-            if weather[index] == weather[13] {
-                foreignerWeatherImage.image = #imageLiteral(resourceName: "clear-day")
-                localWeatherImage.image = #imageLiteral(resourceName: "clear-day")
-            }
-        case .error:
-            if weather[index] == weather[14] {
-                foreignerWeatherImage.image = nil
-                localWeatherImage.image = nil
-            }
-        default:
-            break
-        }
-    }
+//    func updateIconForecast(weatherCode: WeatherCodeAndTemp, forecast: Forecast) {
+//        let index = 0
+//
+//        switch forecast {
+//            //case .tornado:
+//
+//            // case .thunderstorm:
+//
+//        case .snow:
+//            if weather[3] == weather[3] {
+//                foreignerWeatherImage.image = #imageLiteral(resourceName: "snow")
+//                localWeatherImage.image = #imageLiteral(resourceName: "snow")
+//            }
+//            //case .sleet:
+//
+//        case .rain:
+//            if weather[index] == weather[5] {
+//                foreignerWeatherImage.image = #imageLiteral(resourceName: "rain")
+//                localWeatherImage.image = #imageLiteral(resourceName: "rain")
+//            }
+//            //case .hail:
+//
+//        case .fog:
+//            if weather[index] == weather[7] {
+//                foreignerWeatherImage.image = #imageLiteral(resourceName: "fog")
+//                localWeatherImage.image = #imageLiteral(resourceName: "fog")
+//            }
+//        case .wind:
+//            if weather[index] == weather[8] {
+//                foreignerWeatherImage.image = #imageLiteral(resourceName: "wind")
+//                localWeatherImage.image = #imageLiteral(resourceName: "wind")
+//            }
+//        case .cloudy:
+//            if weather[index] == weather[9] {
+//                foreignerWeatherImage.image = #imageLiteral(resourceName: "cloudy")
+//                localWeatherImage.image = #imageLiteral(resourceName: "cloudy")
+//            }
+//        case .partlyCloudyNight:
+//            if weather[index] == weather[10] {
+//                foreignerWeatherImage.image = #imageLiteral(resourceName: "partly-cloudy-night")
+//                localWeatherImage.image = #imageLiteral(resourceName: "partly-cloudy-night")
+//            }
+//        case .partlyCloudyDay:
+//            if weather[index] == weather[11] {
+//                foreignerWeatherImage.image = #imageLiteral(resourceName: "partly-cloudy-day")
+//                localWeatherImage.image = #imageLiteral(resourceName: "partly-cloudy-day")
+//            }
+//        case .clearNight:
+//            if weather[index] == weather[12] {
+//                foreignerWeatherImage.image = #imageLiteral(resourceName: "clear-night")
+//                localWeatherImage.image = #imageLiteral(resourceName: "clear-night")
+//            }
+//        case .clearDay:
+//            if weather[index] == weather[13] {
+//                foreignerWeatherImage.image = #imageLiteral(resourceName: "clear-day")
+//                localWeatherImage.image = #imageLiteral(resourceName: "clear-day")
+//            }
+//        case .error:
+//            if weather[index] == weather[14] {
+//                foreignerWeatherImage.image = nil
+//                localWeatherImage.image = nil
+//            }
+//        default:
+//            break
+//        }
+//    }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		951EF4E521481C9D00152CA8 /* URLStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951EF4E421481C9D00152CA8 /* URLStruct.swift */; };
 		953CBF0E212ADE8F006368CC /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953CBF0D212ADE8F006368CC /* UIViewController.swift */; };
 		953CBF10212C123F006368CC /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953CBF0F212C123F006368CC /* TranslationViewController.swift */; };
 		953CBF12212C1262006368CC /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953CBF11212C1262006368CC /* TranslationService.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		951EF4E421481C9D00152CA8 /* URLStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStruct.swift; sourceTree = "<group>"; };
 		953CBF0D212ADE8F006368CC /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		953CBF0F212C123F006368CC /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		953CBF11212C1262006368CC /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 		956AA5442119DB2F005CB9C1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				951EF4E421481C9D00152CA8 /* URLStruct.swift */,
 				956AA52F2119DA44005CB9C1 /* AppDelegate.swift */,
 				956AA5362119DA46005CB9C1 /* Assets.xcassets */,
 				956AA53B2119DA46005CB9C1 /* Info.plist */,
@@ -363,6 +366,7 @@
 				95687C44213EB26100BD900B /* Weather.swift in Sources */,
 				956AA5462119E1D6005CB9C1 /* CurrencyChangeViewController.swift in Sources */,
 				953CBF10212C123F006368CC /* TranslationViewController.swift in Sources */,
+				951EF4E521481C9D00152CA8 /* URLStruct.swift in Sources */,
 				953CBF12212C1262006368CC /* TranslationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

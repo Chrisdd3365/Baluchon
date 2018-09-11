@@ -8,10 +8,12 @@
 
 import Foundation
 
+enum City: String {
+    case newYork
+    case paris
+}
+
 class WeatherService {
-    
-    private static let weatherParisUrl = URL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%20615702&format=json")!
-    private static let weatherNewYorkUrl = URL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202459115&format=json")!
     
     var task: URLSessionDataTask?
     
@@ -23,9 +25,17 @@ class WeatherService {
         self.weatherLocalSession = weatherLocalSession
     }
     
-    func getForeignerWeather(callback: @escaping (Bool, WeatherCodeAndTemp?) -> Void) {
+    func urlWeather(city: City) -> String {
+        let weatherURL = YahooAPI.query + city.rawValue + YahooAPI.endQuery
+        guard let weatherURLconverted = weatherURL.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return "" }
+        let urlWeather = YahooAPI.baseURL + weatherURLconverted + YahooAPI.format
+        return urlWeather
+    }
+    
+    func getForeignerWeather(city: City, callback: @escaping (Bool, WeatherCodeAndTemp?) -> Void) {
+        guard let url = URL(string: urlWeather(city: .newYork)) else { return }
         task?.cancel()
-        task = weatherForeignerSession.dataTask(with: WeatherService.weatherNewYorkUrl) { data, response, error in
+        task = weatherForeignerSession.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callback(false, nil)
@@ -41,8 +51,8 @@ class WeatherService {
                 }
                 let foreignerCode = weatherForeignerResponseJSON.query.results.channel.item.condition.code
                 let foreignerTemp = weatherForeignerResponseJSON.query.results.channel.item.condition.temp
-    
-                self.getLocalWeather(completionHandler: { (success, data) in
+                
+                self.getLocalWeather(city: city, completionHandler: { (success, data) in
                     guard let localWeather = data else {
                         callback(false, nil)
                         return
@@ -57,9 +67,10 @@ class WeatherService {
         task?.resume()
     }
     
-    func getLocalWeather(completionHandler: @escaping ((Bool, Weather?) -> Void)) {
+    func getLocalWeather(city: City, completionHandler: @escaping ((Bool, Weather?) -> Void)) {
+        guard let url = URL(string: urlWeather(city: .paris)) else { return }
         task?.cancel()
-        task = weatherLocalSession.dataTask(with: WeatherService.weatherParisUrl) { data, response, error in
+        task = weatherLocalSession.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     completionHandler(false, nil)
@@ -78,9 +89,4 @@ class WeatherService {
         }
         task?.resume()
     }
-    
-    
-    
-    
-    
 }

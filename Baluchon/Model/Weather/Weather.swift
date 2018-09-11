@@ -40,7 +40,5 @@ struct WeatherCodeAndTemp {
     var parisCode: String
 }
 
-enum Forecast {
-    case tornado, thunderstorm, snow, sleet, rain, hail, fog, wind, cloudy, partlyCloudyNight, partlyCloudyDay, clearNight, clearDay, error
-}
+
 
