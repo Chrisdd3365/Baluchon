@@ -18,10 +18,27 @@ struct YahooAPI {
     static let query = "select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text='"
     static let endQuery = "') and u='c'"
     static let format = "&format=json"
+    
+    struct YahooCode {
+        static let tornado = ["0", "1", "2"]
+        static let thunderstorm = ["3", "4", "37", "38", "39", "45"]
+        static let snow = ["5", "7", "13", "14", "15", "16", "41", "42", "43", "46", "47"]
+        static let sleet = ["6", "18"]
+        static let rain = ["8", "9", "10", "11", "12", "35", "40"]
+        static let hail = ["17"]
+        static let fog = ["19", "20", "21", "22", "23"]
+        static let wind = ["24"]
+        static let cold = ["25"]
+        static let cloudy = ["26", "44"]
+        static let partlyCloudyNight = ["27", "29"]
+        static let partlyCloudyDay = ["28", "30"]
+        static let clearNight = ["31", "33"]
+        static let clearDay = ["32", "34", "36"]
+        static let error = ["3200"]
+    }
 }
 
-    
-    
+
     
     
     
