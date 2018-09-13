@@ -13,7 +13,7 @@
         <!--Translation-->
         <scene sceneID="8TX-Gq-Z6r">
             <objects>
-                <viewController id="7Jj-hx-3pd" sceneMemberID="viewController">
+                <viewController id="7Jj-hx-3pd" customClass="TranslationViewController" customModule="Baluchon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yrd-Th-spT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,6 +36,9 @@
                                 <state key="normal" title="TRANSLATE">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="translate" destination="7Jj-hx-3pd" eventType="touchUpInside" id="vJj-21-fVI"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBd-0R-uNy">
                                 <rect key="frame" x="15" y="187" width="290" height="30"/>
@@ -49,6 +52,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.86274509803921573" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="y48-eg-JWN" firstAttribute="centerX" secondItem="yrd-Th-spT" secondAttribute="centerX" id="9bp-YR-5x4"/>
                             <constraint firstItem="y48-eg-JWN" firstAttribute="top" secondItem="A3t-EU-uZ8" secondAttribute="top" constant="30" id="Duy-34-gbm"/>
@@ -62,10 +66,23 @@
                             <constraint firstItem="yBd-0R-uNy" firstAttribute="top" secondItem="qgb-Z9-V9Q" secondAttribute="bottom" constant="20" id="pEj-pv-63m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A3t-EU-uZ8"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="vSD-e8-gUD" appends="YES" id="qDT-BC-1m6"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Translation" id="gkA-Fh-To0"/>
+                    <connections>
+                        <outlet property="myTextTextField" destination="qgb-Z9-V9Q" id="WFJ-Gp-jiN"/>
+                        <outlet property="myTranslatedTextLabel" destination="yBd-0R-uNy" id="1ee-UO-6iT"/>
+                        <outlet property="translationButton" destination="a3g-Zb-9QI" id="4Eh-gF-gDx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZp-CH-zK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="vSD-e8-gUD">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="7Jj-hx-3pd" id="TGC-Ud-Iv3"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-112.5" y="-450"/>
         </scene>

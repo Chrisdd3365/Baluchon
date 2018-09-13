@@ -17,8 +17,8 @@ class WeatherService {
     
     var task: URLSessionDataTask?
     
-    private var weatherForeignerSession = URLSession(configuration: .default)
-    private var weatherLocalSession = URLSession(configuration: .default)
+    private var weatherForeignerSession: URLSession
+    private var weatherLocalSession: URLSession
     
     init(weatherForeignerSession: URLSession = URLSession(configuration: .default), weatherLocalSession: URLSession = URLSession(configuration: .default)) {
         self.weatherForeignerSession = weatherForeignerSession
@@ -33,7 +33,7 @@ class WeatherService {
     }
     
     func getForeignerWeather(city: City, callback: @escaping (Bool, WeatherCodeAndTemp?) -> Void) {
-        guard let url = URL(string: urlWeather(city: .newYork)) else { return }
+        guard let url = URL(string: urlWeather(city: city)) else { return }
         task?.cancel()
         task = weatherForeignerSession.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {

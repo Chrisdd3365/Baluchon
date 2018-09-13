@@ -11,10 +11,6 @@ import XCTest
 
 class CurrencyChangeServiceTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-    }
-    
     func testGetCurrencyChangeShouldGetFailedCallbackIfError() {
         // Given
         let currencyChangeService = CurrencyChangeService(

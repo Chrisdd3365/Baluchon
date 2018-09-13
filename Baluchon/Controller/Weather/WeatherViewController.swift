@@ -55,7 +55,7 @@ class WeatherViewController: UIViewController {
     }
     
     func updateLocalWeatherImage(weatherCode: WeatherCodeAndTemp) {
-        if let iconForecast = WeatherCode.convertYahooCodeIntoIconForecast(code: weatherCode.newYorkCode) {
+        if let iconForecast = WeatherCode.convertYahooCodeIntoIconForecast(code: weatherCode.parisCode) {
             let localForecastImage = UIImage(named: iconForecast)
             localWeatherImage.image = localForecastImage
         }

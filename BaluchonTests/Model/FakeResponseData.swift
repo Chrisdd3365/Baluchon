@@ -32,6 +32,14 @@ class FakeCurrencyResponseData: FakeResponseData {
     }
 }
 
+class FakeTranslationResponseData: FakeResponseData {
+    static var translationCorrectData: Data? {
+        let bundle = Bundle(for: FakeResponseData.self)
+        let url = bundle.url(forResource: "Translation", withExtension: "json")!
+        return try! Data(contentsOf: url)
+    }
+}
+
 class FakeWeatherResponseData: FakeResponseData {
     static var weatherNewYorkCorrectData: Data? {
         let bundle = Bundle(for: FakeResponseData.self)

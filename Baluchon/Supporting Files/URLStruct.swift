@@ -13,6 +13,15 @@ struct FixerAPI {
     static let key = "2e4288a2049e923be5767c9bacf7ae2a"
 }
 
+struct GoogleAPI {
+    static let baseURL = "https://translation.googleapis.com/language/translate/v2?key="
+    static let key = "AIzaSyA_lOrCvc-Fb7qO5Nes2cgLz2wxgOqfWms"
+    static let source = "&source="
+    static let target = "&target="
+    static let format = "&format=text"
+    static let query = "&q="
+}
+
 struct YahooAPI {
     static let baseURL = "https://query.yahooapis.com/v1/public/yql?q="
     static let query = "select item.condition from weather.forecast where woeid in (select woeid from geo.places(1) where text='"
@@ -37,6 +46,8 @@ struct YahooAPI {
         static let error = ["3200"]
     }
 }
+
+
 
 
     
