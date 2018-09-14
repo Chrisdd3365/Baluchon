@@ -15,8 +15,8 @@ enum City: String {
 
 class WeatherService {
     
+    //MARK: - Properties
     var task: URLSessionDataTask?
-    
     private var weatherForeignerSession: URLSession
     private var weatherLocalSession: URLSession
     
@@ -25,7 +25,8 @@ class WeatherService {
         self.weatherLocalSession = weatherLocalSession
     }
     
-    func urlWeather(city: City) -> String {
+    //MARK: - Methods
+    private func urlWeather(city: City) -> String {
         let weatherURL = YahooAPI.query + city.rawValue + YahooAPI.endQuery
         guard let weatherURLconverted = weatherURL.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return "" }
         let urlWeather = YahooAPI.baseURL + weatherURLconverted + YahooAPI.format

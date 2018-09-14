@@ -21,8 +21,8 @@ struct TranslatedText: Decodable {
 }
 
 struct SourceAndTarget {
-    var source = "fr"
-    var target = "en"
+    static var source = "fr"
+    static var target = "en"
 }
 
 struct TextTranslated {

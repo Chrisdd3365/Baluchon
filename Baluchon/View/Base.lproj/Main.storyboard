@@ -36,6 +36,9 @@
                                 <state key="normal" title="TRANSLATE">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="1" green="0.12771455740000001" blue="0.11696253049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="translate" destination="7Jj-hx-3pd" eventType="touchUpInside" id="vJj-21-fVI"/>
                                 </connections>
@@ -50,11 +53,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bCj-bY-X6K">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.86274509803921573" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="y48-eg-JWN" firstAttribute="centerX" secondItem="yrd-Th-spT" secondAttribute="centerX" id="9bp-YR-5x4"/>
+                            <constraint firstItem="bCj-bY-X6K" firstAttribute="centerX" secondItem="yrd-Th-spT" secondAttribute="centerX" id="CNV-Qw-KXQ"/>
                             <constraint firstItem="y48-eg-JWN" firstAttribute="top" secondItem="A3t-EU-uZ8" secondAttribute="top" constant="30" id="Duy-34-gbm"/>
                             <constraint firstItem="A3t-EU-uZ8" firstAttribute="trailing" secondItem="qgb-Z9-V9Q" secondAttribute="trailing" constant="15" id="IO3-Uy-s9L"/>
                             <constraint firstItem="yBd-0R-uNy" firstAttribute="leading" secondItem="A3t-EU-uZ8" secondAttribute="leading" constant="15" id="J8g-Kw-INn"/>
@@ -62,6 +69,7 @@
                             <constraint firstItem="a3g-Zb-9QI" firstAttribute="centerY" secondItem="yrd-Th-spT" secondAttribute="centerY" id="Jvf-h1-4eG"/>
                             <constraint firstItem="a3g-Zb-9QI" firstAttribute="centerX" secondItem="yrd-Th-spT" secondAttribute="centerX" id="ZnF-nv-2hl"/>
                             <constraint firstItem="A3t-EU-uZ8" firstAttribute="trailing" secondItem="yBd-0R-uNy" secondAttribute="trailing" constant="15" id="gjK-0D-MrR"/>
+                            <constraint firstItem="bCj-bY-X6K" firstAttribute="centerY" secondItem="yrd-Th-spT" secondAttribute="centerY" id="iFn-ZY-ZQD"/>
                             <constraint firstItem="qgb-Z9-V9Q" firstAttribute="leading" secondItem="A3t-EU-uZ8" secondAttribute="leading" constant="15" id="lse-3p-Iax"/>
                             <constraint firstItem="yBd-0R-uNy" firstAttribute="top" secondItem="qgb-Z9-V9Q" secondAttribute="bottom" constant="20" id="pEj-pv-63m"/>
                         </constraints>
@@ -72,6 +80,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Translation" id="gkA-Fh-To0"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="bCj-bY-X6K" id="u0k-Wt-oWs"/>
                         <outlet property="myTextTextField" destination="qgb-Z9-V9Q" id="WFJ-Gp-jiN"/>
                         <outlet property="myTranslatedTextLabel" destination="yBd-0R-uNy" id="1ee-UO-6iT"/>
                         <outlet property="translationButton" destination="a3g-Zb-9QI" id="4Eh-gF-gDx"/>
@@ -121,8 +130,15 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TAf-Yt-LQm">
+                                                        <rect key="frame" x="150" y="115" width="20" height="20"/>
+                                                    </activityIndicatorView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="0.86274509803921573" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="TAf-Yt-LQm" firstAttribute="centerX" secondItem="63C-6p-Y19" secondAttribute="centerX" id="lYD-Dz-z8t"/>
+                                                    <constraint firstItem="TAf-Yt-LQm" firstAttribute="centerY" secondItem="63C-6p-Y19" secondAttribute="centerY" id="z3Y-zL-MpR"/>
+                                                </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubX-Iv-Tqj">
                                                 <rect key="frame" x="0.0" y="249.5" width="320" height="249.5"/>
@@ -145,8 +161,15 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UAe-YR-7AH">
+                                                        <rect key="frame" x="150" y="115" width="20" height="20"/>
+                                                    </activityIndicatorView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="0.86274509803921573" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="UAe-YR-7AH" firstAttribute="centerY" secondItem="ubX-Iv-Tqj" secondAttribute="centerY" id="WLf-ko-0mF"/>
+                                                    <constraint firstItem="UAe-YR-7AH" firstAttribute="centerX" secondItem="ubX-Iv-Tqj" secondAttribute="centerX" id="baW-yi-qvs"/>
+                                                </constraints>
                                             </view>
                                         </subviews>
                                     </stackView>
@@ -164,9 +187,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Weather" id="Tl3-Iz-GZ1"/>
                     <connections>
+                        <outlet property="foreignerActivityIndicator" destination="TAf-Yt-LQm" id="A62-oY-ntO"/>
                         <outlet property="foreignerCityNameLabel" destination="IDj-ml-ssZ" id="Ivh-yQ-S21"/>
                         <outlet property="foreignerTemperatureLabel" destination="7fh-u3-Sgu" id="YJX-30-xm4"/>
                         <outlet property="foreignerWeatherImage" destination="eGu-Lk-d8x" id="vOy-wp-p1e"/>
+                        <outlet property="localActivityIndicator" destination="UAe-YR-7AH" id="5Bj-3f-H8I"/>
                         <outlet property="localCityNameLabel" destination="Rdi-Lx-JdW" id="MUu-XG-vge"/>
                         <outlet property="localTemperatureLabel" destination="z7q-0F-MP8" id="eGZ-RG-cS0"/>
                         <outlet property="localWeatherImage" destination="9MB-UA-r9X" id="t4D-NQ-mLn"/>

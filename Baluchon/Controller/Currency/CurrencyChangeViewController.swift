@@ -18,7 +18,7 @@ class CurrencyChangeViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: - Properties
-    var selectedCurrency: Double = 0
+    private var selectedCurrency: Double = 0
     let currencyChangeService = CurrencyChangeService()
     
     //MARK: - View Life Cycle
@@ -46,39 +46,39 @@ class CurrencyChangeViewController: UIViewController {
     }
     
     //MARK: - Methods
-    func currencyChange() {
+    private func currencyChange() {
         currencyChangeService.getCurrencyChange { (success, rate) in
             self.toggleActivityIndicator(shown: true)
             if success {
                 self.toggleActivityIndicator(shown: false)
             } else {
-                self.showAlert(title: "Error", message: "Rates download failed!")
+                self.showAlert(title: "Error", message: "Rates data download failed!")
             }
         }
     }
     
-    func toggleActivityIndicator(shown: Bool) {
+    private func toggleActivityIndicator(shown: Bool) {
         activityIndicator.isHidden = !shown
         convertButton.isHidden = shown
     }
-
-    func createNumberPad() {
+    
+    private func createNumberPad() {
         myValueTextField.keyboardType = UIKeyboardType.numberPad
     }
     
-    func createCurrencyPicker() {
+    private func createCurrencyPicker() {
         let currencyPicker = UIPickerView()
         currencyPicker.delegate = self
         myCurrencyTextField.inputView = currencyPicker
     }
     
-    func textFieldDelegate() {
+    private func textFieldDelegate() {
         myValueTextField.delegate = self
         myCurrencyTextField.delegate = self
         convertButton.isEnabled = false
     }
     
-    func clearConvertedValueLabel() {
+    private func clearConvertedValueLabel() {
         if myValueTextField.text == "" || myCurrencyTextField.text == "" {
             myConvertedValueLabel.text = nil
         }

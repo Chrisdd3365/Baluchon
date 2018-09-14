@@ -10,15 +10,16 @@ import UIKit
 
 class TranslationService {
     
+    //MARK: - Properties
     var task: URLSessionDataTask?
-    
     private var translationSession: URLSession
     
     init(translationSession: URLSession = URLSession(configuration: .default)) {
         self.translationSession = translationSession
     }
     
-    func urlTranslation(text: String, source: String, target: String) -> String {
+    //MARK: - Methods
+    private func urlTranslation(text: String, source: String, target: String) -> String {
         var translationURL: String
         guard let translationTextConverted = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             return "" }

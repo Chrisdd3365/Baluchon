@@ -10,9 +10,9 @@ import UIKit
 
 class CurrencyChangeService {
     
+    //MARK: - Properties
     var currencies = [String]()
     var rate = [Double]()
-    
     var task: URLSessionDataTask?
     private var currencySession: URLSession
     
@@ -20,6 +20,7 @@ class CurrencyChangeService {
         self.currencySession = currencySession
     }
     
+    //MARK: - Methods
     func getCurrencyChange(callback: @escaping (Bool, Currency?) -> Void) {
         let fixerUrlString = FixerAPI.baseURL + FixerAPI.key
         guard let url = URL(string: fixerUrlString) else { return }
