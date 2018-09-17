@@ -20,11 +20,3 @@ struct TranslatedText: Decodable {
     let translatedText: String
 }
 
-struct SourceAndTarget {
-    static var source = "fr"
-    static var target = "en"
-}
-
-struct TextTranslated {
-    var text: String
-}

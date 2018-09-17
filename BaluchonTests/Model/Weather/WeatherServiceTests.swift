@@ -85,23 +85,6 @@ class WeatherServiceTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetLocalWeatherShouldGetFailedCallbackIfIncorrectData() {
-        // Given
-        let weatherService = WeatherService(
-            weatherForeignerSession: URLSessionFake(data: nil, response: nil, error: nil),
-            weatherLocalSession: URLSessionFake(data: FakeResponseData.incorrectData, response: FakeResponseData.responseOK, error: nil))
-        
-        // When
-        let expectation = XCTestExpectation(description: "Wait for queue change.")
-        weatherService.getLocalWeather(city: .newYork) { (success, weather) in
-            // Then
-            XCTAssertFalse(success)
-            XCTAssertNil(weather)
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
     func testGetForeignerWeatherShouldGetFailedNotificationIfNoLocalData() {
         // Given
         let weatherService = WeatherService(
@@ -199,5 +182,31 @@ class WeatherServiceTests: XCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testGetLocalWeatherShouldGetFailedCallbackIfIncorrectData() {
+        // Given
+        let weatherService = WeatherService(
+            weatherForeignerSession: URLSessionFake(data: nil, response: nil, error: nil),
+            weatherLocalSession: URLSessionFake(data: FakeResponseData.incorrectData, response: FakeResponseData.responseOK, error: nil))
+        
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+        weatherService.getLocalWeather(city: .newYork) { (success, weather) in
+            // Then
+            XCTAssertFalse(success)
+            XCTAssertNil(weather)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testConvertYahooCodeIntoIconForecastWhenRetrievingCodeFromYahooAPIThenDisplayForecastIcon() {
+        //Given
+        //When
+        let weatherCode = WeatherCode.convertYahooCodeIntoIconForecast(code: "26")
+        
+        //Then
+        XCTAssertNotNil(weatherCode)
     }
 }

@@ -11,10 +11,9 @@ import UIKit
 class TranslationViewController: UIViewController {
     
     //MARK: - Outlets
-    @IBOutlet weak var myTextTextField: UITextField!
-    @IBOutlet weak var myTranslatedTextLabel: UILabel!
+    @IBOutlet weak var textToTranslateTextField: UITextField!
+    @IBOutlet weak var textTranslatedTextView: UITextView!
     @IBOutlet weak var translationButton: UIButton!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: - Properties
     let translationService = TranslationService()
@@ -30,49 +29,38 @@ class TranslationViewController: UIViewController {
         translation()
     }
     
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        myTextTextField.resignFirstResponder()
-    }
-    
     //MARK: - Methods
     private func translation() {
-        let source = SourceAndTarget.source
-        let target = SourceAndTarget.target
-        
-        if myTextTextField.text != "" {
-            translationService.getTranslation(text: myTextTextField.text!, source: source, target: target) { (success, translation) in
-                self.toggleActivityIndicator(shown: true)
-                if success, let translation = translation?.data.translations {
-                    self.toggleActivityIndicator(shown: false)
-                    let textTranslated = translation[0].translatedText
-                    self.myTranslatedTextLabel.text = textTranslated
-                } else {
-                    self.showAlert(title: "Error", message: "Translation's data download failed!")
-                }
+        guard let textTextField = textToTranslateTextField.text else { return }
+        translationService.getTranslation(text: textTextField) { (success, translation) in
+            if success, let translation = translation?.data.translations {
+                let textTranslated = translation[0].translatedText
+                self.textTranslatedTextView.text = textTranslated
+            } else {
+                self.showAlert(title: "Error", message: "Translation's data download failed!")
             }
         }
     }
     
-    private func toggleActivityIndicator(shown: Bool) {
-        activityIndicator.isHidden = !shown
-        translationButton.isHidden = shown
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     private func textFieldDelegate() {
-        myTextTextField.delegate = self
+        textToTranslateTextField.delegate = self
         translationButton.isEnabled = false
     }
     
     private func clearTranslatedTextLabel() {
-        if myTextTextField.text == ""  {
-            myTranslatedTextLabel.text = nil
+        if textToTranslateTextField.text == ""  {
+            textTranslatedTextView.text = nil
         }
     }
 }
 
 extension TranslationViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if myTextTextField.hasText {
+        if textToTranslateTextField.hasText {
             translationButton.isEnabled = true
         } else {
             translationButton.isEnabled = false

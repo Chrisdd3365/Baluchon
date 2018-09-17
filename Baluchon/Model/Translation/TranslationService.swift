@@ -19,19 +19,29 @@ class TranslationService {
     }
     
     //MARK: - Methods
-    private func urlTranslation(text: String, source: String, target: String) -> String {
+    private func urlTranslation(text: String) -> String {
         var translationURL: String
-        guard let translationTextConverted = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
-            return "" }
-        translationURL = GoogleAPI.baseURL + GoogleAPI.key + GoogleAPI.source + source + GoogleAPI.target + target + GoogleAPI.format + GoogleAPI.query + translationTextConverted
+        guard let translationTextConverted = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return "" }
+        translationURL = GoogleAPI.baseURL + GoogleAPI.key + GoogleAPI.query + translationTextConverted
         let url = translationURL
         return url
     }
     
-    func getTranslation(text: String, source: String, target: String, callback: @escaping (Bool, Data?) -> Void) {
-        guard let url = URL(string: urlTranslation(text: text, source: source, target: target)) else { return }
+    private func createTranslationRequest(text: String) -> URLRequest {
+        let url = URL(string: urlTranslation(text: text))!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        let body = "&source=fr&target=en&format=text"
+        request.httpBody = body.data(using: .utf8)
+        
+        return request
+    }
+    
+    func getTranslation(text: String, callback: @escaping (Bool, Data?) -> Void) {
+        let request = createTranslationRequest(text: text)
         task?.cancel()
-        task = translationSession.dataTask(with: url) { data, response, error in
+        task = translationSession.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callback(false, nil)

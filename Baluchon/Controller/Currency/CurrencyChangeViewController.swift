@@ -29,6 +29,7 @@ class CurrencyChangeViewController: UIViewController {
         createCurrencyPicker()
         createNumberPad()
     }
+    
     //MARK: - Action
     @IBAction func convert() {
         if myValueTextField.text != "" {
@@ -39,12 +40,7 @@ class CurrencyChangeViewController: UIViewController {
             myConvertedValueLabel.text = String(format: "%.2f", total)
         }
     }
-    
-    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        myValueTextField.resignFirstResponder()
-        myCurrencyTextField.resignFirstResponder()
-    }
-    
+
     //MARK: - Methods
     private func currencyChange() {
         currencyChangeService.getCurrencyChange { (success, rate) in
@@ -57,6 +53,9 @@ class CurrencyChangeViewController: UIViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     private func toggleActivityIndicator(shown: Bool) {
         activityIndicator.isHidden = !shown
         convertButton.isHidden = shown

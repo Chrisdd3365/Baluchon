@@ -16,9 +16,6 @@ struct FixerAPI {
 struct GoogleAPI {
     static let baseURL = "https://translation.googleapis.com/language/translate/v2?key="
     static let key = "AIzaSyA_lOrCvc-Fb7qO5Nes2cgLz2wxgOqfWms"
-    static let source = "&source="
-    static let target = "&target="
-    static let format = "&format=text"
     static let query = "&q="
 }
 

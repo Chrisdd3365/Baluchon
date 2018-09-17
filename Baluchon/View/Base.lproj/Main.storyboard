@@ -30,8 +30,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kJN-EZ-AOb">
+                                <rect key="frame" x="15" y="187" width="290" height="130"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="ua3-W6-vrP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3g-Zb-9QI">
-                                <rect key="frame" x="114" y="264.5" width="92" height="39"/>
+                                <rect key="frame" x="114" y="354" width="92" height="39"/>
                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="17"/>
                                 <state key="normal" title="TRANSLATE">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -43,55 +52,33 @@
                                     <action selector="translate" destination="7Jj-hx-3pd" eventType="touchUpInside" id="vJj-21-fVI"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBd-0R-uNy">
-                                <rect key="frame" x="15" y="187" width="290" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="xxU-XI-OEE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bCj-bY-X6K">
-                                <rect key="frame" x="150" y="274" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.86274509803921573" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="y48-eg-JWN" firstAttribute="centerX" secondItem="yrd-Th-spT" secondAttribute="centerX" id="9bp-YR-5x4"/>
-                            <constraint firstItem="bCj-bY-X6K" firstAttribute="centerX" secondItem="yrd-Th-spT" secondAttribute="centerX" id="CNV-Qw-KXQ"/>
+                            <constraint firstItem="a3g-Zb-9QI" firstAttribute="leading" secondItem="A3t-EU-uZ8" secondAttribute="leading" constant="114" id="BXK-ae-Tfm"/>
                             <constraint firstItem="y48-eg-JWN" firstAttribute="top" secondItem="A3t-EU-uZ8" secondAttribute="top" constant="30" id="Duy-34-gbm"/>
                             <constraint firstItem="A3t-EU-uZ8" firstAttribute="trailing" secondItem="qgb-Z9-V9Q" secondAttribute="trailing" constant="15" id="IO3-Uy-s9L"/>
-                            <constraint firstItem="yBd-0R-uNy" firstAttribute="leading" secondItem="A3t-EU-uZ8" secondAttribute="leading" constant="15" id="J8g-Kw-INn"/>
                             <constraint firstItem="qgb-Z9-V9Q" firstAttribute="top" secondItem="y48-eg-JWN" secondAttribute="bottom" constant="60" id="JpS-pe-1II"/>
-                            <constraint firstItem="a3g-Zb-9QI" firstAttribute="centerY" secondItem="yrd-Th-spT" secondAttribute="centerY" id="Jvf-h1-4eG"/>
-                            <constraint firstItem="a3g-Zb-9QI" firstAttribute="centerX" secondItem="yrd-Th-spT" secondAttribute="centerX" id="ZnF-nv-2hl"/>
-                            <constraint firstItem="A3t-EU-uZ8" firstAttribute="trailing" secondItem="yBd-0R-uNy" secondAttribute="trailing" constant="15" id="gjK-0D-MrR"/>
-                            <constraint firstItem="bCj-bY-X6K" firstAttribute="centerY" secondItem="yrd-Th-spT" secondAttribute="centerY" id="iFn-ZY-ZQD"/>
+                            <constraint firstItem="A3t-EU-uZ8" firstAttribute="trailing" secondItem="kJN-EZ-AOb" secondAttribute="trailing" constant="15" id="MIv-o7-aos"/>
+                            <constraint firstItem="kJN-EZ-AOb" firstAttribute="top" secondItem="qgb-Z9-V9Q" secondAttribute="bottom" constant="20" id="RaJ-Wv-K3g"/>
+                            <constraint firstItem="A3t-EU-uZ8" firstAttribute="bottom" secondItem="a3g-Zb-9QI" secondAttribute="bottom" constant="126" id="g2I-0v-Vb5"/>
+                            <constraint firstItem="kJN-EZ-AOb" firstAttribute="leading" secondItem="A3t-EU-uZ8" secondAttribute="leading" constant="15" id="lNQ-zL-qJl"/>
                             <constraint firstItem="qgb-Z9-V9Q" firstAttribute="leading" secondItem="A3t-EU-uZ8" secondAttribute="leading" constant="15" id="lse-3p-Iax"/>
-                            <constraint firstItem="yBd-0R-uNy" firstAttribute="top" secondItem="qgb-Z9-V9Q" secondAttribute="bottom" constant="20" id="pEj-pv-63m"/>
+                            <constraint firstItem="a3g-Zb-9QI" firstAttribute="top" secondItem="kJN-EZ-AOb" secondAttribute="bottom" constant="37" id="o3o-7I-7EV"/>
+                            <constraint firstItem="A3t-EU-uZ8" firstAttribute="trailing" secondItem="a3g-Zb-9QI" secondAttribute="trailing" constant="114" id="yQc-FF-cdC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A3t-EU-uZ8"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="vSD-e8-gUD" appends="YES" id="qDT-BC-1m6"/>
-                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Translation" id="gkA-Fh-To0"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="bCj-bY-X6K" id="u0k-Wt-oWs"/>
-                        <outlet property="myTextTextField" destination="qgb-Z9-V9Q" id="WFJ-Gp-jiN"/>
-                        <outlet property="myTranslatedTextLabel" destination="yBd-0R-uNy" id="1ee-UO-6iT"/>
+                        <outlet property="textToTranslateTextField" destination="qgb-Z9-V9Q" id="xyQ-1N-tUB"/>
+                        <outlet property="textTranslatedTextView" destination="kJN-EZ-AOb" id="r00-nl-3d1"/>
                         <outlet property="translationButton" destination="a3g-Zb-9QI" id="4Eh-gF-gDx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZp-CH-zK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="vSD-e8-gUD">
-                    <connections>
-                        <action selector="dismissKeyboard:" destination="7Jj-hx-3pd" id="TGC-Ud-Iv3"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-112.5" y="-450"/>
         </scene>
@@ -275,9 +262,6 @@
                             <constraint firstItem="p1D-BM-rIH" firstAttribute="top" secondItem="svv-hE-8gm" secondAttribute="bottom" constant="50" id="zc4-Eq-OpT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T1s-u5-2G5"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="j83-SY-pJm" appends="YES" id="LXc-vZ-aQd"/>
-                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Currency Change" id="hwr-2b-DJp"/>
                     <connections>
@@ -289,11 +273,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZoV-3I-reJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="j83-SY-pJm">
-                    <connections>
-                        <action selector="dismissKeyboard:" destination="ucC-Jq-Ew2" id="v57-WV-oh1"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-112.5" y="-1215.8450704225352"/>
         </scene>

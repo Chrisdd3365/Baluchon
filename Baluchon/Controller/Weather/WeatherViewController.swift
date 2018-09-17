@@ -20,7 +20,6 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var localWeatherImage: UIImageView!
     @IBOutlet weak var localActivityIndicator: UIActivityIndicatorView!
     
-    
     //MARK: - Properties
     var weatherService = WeatherService()
     

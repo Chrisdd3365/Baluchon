@@ -28,7 +28,7 @@ enum Forecast: String {
 
 class WeatherCode {
     
-    static let weather: [(Forecast, [String])] = [(.tornado, YahooAPI.YahooCode.tornado),
+    static let weathers: [(Forecast, [String])] = [(.tornado, YahooAPI.YahooCode.tornado),
                                                   (.thunderstorm, YahooAPI.YahooCode.thunderstorm),
                                                   (.snow, YahooAPI.YahooCode.snow),
                                                   (.sleet, YahooAPI.YahooCode.sleet),
@@ -46,9 +46,9 @@ class WeatherCode {
     
     static func convertYahooCodeIntoIconForecast(code: String) -> String? {
         var iconForecast: String?
-        for w in weather {
-            if w.1.contains(code) {
-                iconForecast = w.0.rawValue
+        for weather in weathers {
+            if weather.1.contains(code) {
+                iconForecast = weather.0.rawValue
             }
         }
         return iconForecast
