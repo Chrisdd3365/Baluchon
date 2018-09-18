@@ -7,8 +7,9 @@
 //
 
 import UIKit
-
+//Extension of UIViewController
 extension UIViewController {
+    //Method to show alerts when an error occurs
     func showAlert(title: String, message: String) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))

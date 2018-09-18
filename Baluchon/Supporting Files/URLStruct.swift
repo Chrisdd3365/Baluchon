@@ -8,6 +8,7 @@
 
 import Foundation
 
+//API structure to handle URL
 struct FixerAPI {
     static let baseURL = "http://data.fixer.io/api/latest?access_key="
     static let key = "2e4288a2049e923be5767c9bacf7ae2a"

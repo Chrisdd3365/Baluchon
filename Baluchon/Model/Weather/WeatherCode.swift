@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Enumeration named Forecast
 enum Forecast: String {
     case tornado
     case thunderstorm
@@ -26,8 +27,9 @@ enum Forecast: String {
     case error
 }
 
+//Class named WeatherCode to compare the code retrieved from Yahoo Weather and the forecast's icon
 class WeatherCode {
-    
+    //Array of tuples
     static let weathers: [(Forecast, [String])] = [(.tornado, YahooAPI.YahooCode.tornado),
                                                   (.thunderstorm, YahooAPI.YahooCode.thunderstorm),
                                                   (.snow, YahooAPI.YahooCode.snow),
@@ -44,6 +46,7 @@ class WeatherCode {
                                                   (.clearDay, YahooAPI.YahooCode.clearDay),
                                                   (.error, YahooAPI.YahooCode.error)]
     
+    //Method to convert Yahoo Weather's code into a forecast's icon
     static func convertYahooCodeIntoIconForecast(code: String) -> String? {
         var iconForecast: String?
         for weather in weathers {

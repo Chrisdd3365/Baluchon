@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Fixer API structure
 struct Currency: Decodable {
     let rates: [String: Double]
 }

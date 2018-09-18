@@ -30,6 +30,7 @@ class TranslationViewController: UIViewController {
     }
     
     //MARK: - Methods
+    //Method to call the getTranslation method from TranslationService
     private func translation() {
         guard let textTextField = textToTranslateTextField.text else { return }
         translationService.getTranslation(text: textTextField) { (success, translation) in
@@ -41,30 +42,30 @@ class TranslationViewController: UIViewController {
             }
         }
     }
-    
+    //Method to dismiss keyboard from UITextView
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-    
+    //Method to delegate from UITextFieldDelegate
     private func textFieldDelegate() {
         textToTranslateTextField.delegate = self
         translationButton.isEnabled = false
     }
-    
-    private func clearTranslatedTextLabel() {
+    //Method to clear the translated text when the text field is empty
+    private func clearTranslatedText() {
         if textToTranslateTextField.text == ""  {
             textTranslatedTextView.text = nil
         }
     }
 }
-
+//Extension UITextFieldDelegate
 extension TranslationViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textToTranslateTextField.hasText {
             translationButton.isEnabled = true
         } else {
             translationButton.isEnabled = false
-            clearTranslatedTextLabel()
+            clearTranslatedText()
         }
     }
 }

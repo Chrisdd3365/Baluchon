@@ -19,6 +19,7 @@ class TranslationService {
     }
     
     //MARK: - Methods
+    //Method to retrieve url of Google Translate API
     private func urlTranslation(text: String) -> String {
         var translationURL: String
         guard let translationTextConverted = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return "" }
@@ -26,7 +27,7 @@ class TranslationService {
         let url = translationURL
         return url
     }
-    
+    //Method to create an URLrequest POST
     private func createTranslationRequest(text: String) -> URLRequest {
         let url = URL(string: urlTranslation(text: text))!
         var request = URLRequest(url: url)
@@ -37,7 +38,7 @@ class TranslationService {
         
         return request
     }
-    
+    //Method to get the translation from the Google Translate API with a POST request
     func getTranslation(text: String, callback: @escaping (Bool, Data?) -> Void) {
         let request = createTranslationRequest(text: text)
         task?.cancel()

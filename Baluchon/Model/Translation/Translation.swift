@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Google Translate API structure 
 struct Data: Decodable {
     var data: Translations
 }

@@ -31,6 +31,7 @@ class WeatherViewController: UIViewController {
     }
     
     //MARK: - Methods
+    //Method to call the getForeignerWeather method from WeatherServivce
     private func showWeather() {
         weatherService.getForeignerWeather(city: .newYork) { (success, weather) in
             self.toggleActivityIndicator(shown: true)
@@ -44,31 +45,31 @@ class WeatherViewController: UIViewController {
             }
         }
     }
-    
+    //Method to update cities labels
     private func updateCityNameLabel() {
         foreignerCityNameLabel.text = "NEW YORK"
         localCityNameLabel.text = "PARIS"
     }
-    
+    //Method to update temp labels
     private func updateTempLabel(weatherTemp: WeatherCodeAndTemp) {
         foreignerTemperatureLabel.text = weatherTemp.newYorkTemp + "°C"
         localTemperatureLabel.text = weatherTemp.parisTemp + "°C"
     }
-    
+    //Method to update foreigner weather image with a forecast icon
     private func updateForeignerWeatherImage(weatherCode: WeatherCodeAndTemp) {
         if let iconForecast = WeatherCode.convertYahooCodeIntoIconForecast(code: weatherCode.newYorkCode) {
             let foreignerForecastImage = UIImage(named: iconForecast)
             foreignerWeatherImage.image = foreignerForecastImage
         }
     }
-    
+    //Method to update local weather image with a forecast icon
     private func updateLocalWeatherImage(weatherCode: WeatherCodeAndTemp) {
         if let iconForecast = WeatherCode.convertYahooCodeIntoIconForecast(code: weatherCode.parisCode) {
             let localForecastImage = UIImage(named: iconForecast)
             localWeatherImage.image = localForecastImage
         }
     }
-    
+    //Method to toggle activity indicator when datas are currently downloading
     private func toggleActivityIndicator(shown: Bool) {
         foreignerActivityIndicator.isHidden = !shown
         localActivityIndicator.isHidden = !shown

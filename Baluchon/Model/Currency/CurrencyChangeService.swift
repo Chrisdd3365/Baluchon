@@ -11,7 +11,9 @@ import UIKit
 class CurrencyChangeService {
     
     //MARK: - Properties
+    //To retrieve the key part of rates (dictionnary from Currency.swift file)
     var currencies = [String]()
+    //To retrieve the value part of rates (dictionnary from Currency.swift file)
     var rate = [Double]()
     var task: URLSessionDataTask?
     private var currencySession: URLSession
@@ -21,6 +23,7 @@ class CurrencyChangeService {
     }
     
     //MARK: - Methods
+    //Method to get the currency from the Fixer API with a GET request
     func getCurrencyChange(callback: @escaping (Bool, Currency?) -> Void) {
         let fixerUrlString = FixerAPI.baseURL + FixerAPI.key
         guard let url = URL(string: fixerUrlString) else { return }

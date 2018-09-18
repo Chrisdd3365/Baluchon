@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Yahoo Weather API structure
 struct Weather: Decodable {
     let query: WeatherQuery
 }

@@ -32,6 +32,12 @@ class CurrencyChangeViewController: UIViewController {
     
     //MARK: - Action
     @IBAction func convert() {
+        convertValue()
+    }
+
+    //MARK: - Methods
+    //Method to get the converted value
+    private func convertValue() {
         if myValueTextField.text != "" {
             var total: Double = 0
             guard let valueTextField = myValueTextField.text else { return }
@@ -40,8 +46,7 @@ class CurrencyChangeViewController: UIViewController {
             myConvertedValueLabel.text = String(format: "%.2f", total)
         }
     }
-
-    //MARK: - Methods
+    //Method to call the getCurrencyChange method from CurrencyChangeService
     private func currencyChange() {
         currencyChangeService.getCurrencyChange { (success, rate) in
             self.toggleActivityIndicator(shown: true)
@@ -52,38 +57,39 @@ class CurrencyChangeViewController: UIViewController {
             }
         }
     }
-    
+    //Method to dismiss keyboard from UITextField
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
+    //Method to toggle activity indicator when datas are currently downloading
     private func toggleActivityIndicator(shown: Bool) {
         activityIndicator.isHidden = !shown
         convertButton.isHidden = shown
     }
-    
+    //Method to activate the number pad when taping on the value text field
     private func createNumberPad() {
         myValueTextField.keyboardType = UIKeyboardType.numberPad
     }
-    
+    //Method to create a picker view programmatically
     private func createCurrencyPicker() {
         let currencyPicker = UIPickerView()
         currencyPicker.delegate = self
         myCurrencyTextField.inputView = currencyPicker
     }
-    
+    //Method to delegate from the UITextFieldDelegate
     private func textFieldDelegate() {
         myValueTextField.delegate = self
         myCurrencyTextField.delegate = self
         convertButton.isEnabled = false
     }
-    
+    //Method to clear the converted value label when the text fields are empties
     private func clearConvertedValueLabel() {
         if myValueTextField.text == "" || myCurrencyTextField.text == "" {
             myConvertedValueLabel.text = nil
         }
     }
 }
-
+//Extension UIPickerViewDelegate
 extension CurrencyChangeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -102,7 +108,7 @@ extension CurrencyChangeViewController: UIPickerViewDelegate, UIPickerViewDataSo
         myCurrencyTextField.text = currencyChangeService.currencies[row]
     }
 }
-
+//Extension UITextFieldDelegate
 extension CurrencyChangeViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if myValueTextField.hasText && myCurrencyTextField.hasText {

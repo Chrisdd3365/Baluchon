@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Enumeration named City
 enum City: String {
     case newYork
     case paris
@@ -26,13 +27,14 @@ class WeatherService {
     }
     
     //MARK: - Methods
+    //Method to retrieve url of Yahoo Weather API
     private func urlWeather(city: City) -> String {
         let weatherURL = YahooAPI.query + city.rawValue + YahooAPI.endQuery
         guard let weatherURLconverted = weatherURL.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return "" }
         let urlWeather = YahooAPI.baseURL + weatherURLconverted + YahooAPI.format
         return urlWeather
     }
-    
+    //Method to get the foreigner's city weather from the Yahoo Weather API with a GET request
     func getForeignerWeather(city: City, callback: @escaping (Bool, WeatherCodeAndTemp?) -> Void) {
         guard let url = URL(string: urlWeather(city: city)) else { return }
         task?.cancel()
@@ -67,7 +69,7 @@ class WeatherService {
         }
         task?.resume()
     }
-    
+    //Method to get the local's city weather from the Yahoo Weather API with a GET request
     func getLocalWeather(city: City, completionHandler: @escaping ((Bool, Weather?) -> Void)) {
         guard let url = URL(string: urlWeather(city: .paris)) else { return }
         task?.cancel()
