@@ -74,6 +74,7 @@ class CurrencyChangeViewController: UIViewController {
     private func createCurrencyPicker() {
         let currencyPicker = UIPickerView()
         currencyPicker.delegate = self
+        currencyPicker.backgroundColor = .black
         myCurrencyTextField.inputView = currencyPicker
     }
     //Method to delegate from the UITextFieldDelegate
@@ -106,6 +107,20 @@ extension CurrencyChangeViewController: UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCurrency = currencyChangeService.rate[row]
         myCurrencyTextField.text = currencyChangeService.currencies[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label: UILabel
+        if let view = view as? UILabel {
+            label = view
+        } else {
+            label = UILabel()
+        }
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont(name: "Helvetica Neue", size: 17)
+        label.text = currencyChangeService.currencies[row]
+        return label
     }
 }
 //Extension UITextFieldDelegate
