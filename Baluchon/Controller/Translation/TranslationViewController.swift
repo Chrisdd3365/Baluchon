@@ -21,6 +21,7 @@ class TranslationViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setPlaceholderTextView()
         textFieldDelegate()
     }
     
@@ -37,6 +38,7 @@ class TranslationViewController: UIViewController {
             if success, let translation = translation?.data.translations {
                 let textTranslated = translation[0].translatedText
                 self.textTranslatedTextView.text = textTranslated
+                self.textTranslatedTextView.textColor = UIColor.black
             } else {
                 self.showAlert(title: "Error", message: "Translation's data download failed!")
             }
@@ -57,6 +59,11 @@ class TranslationViewController: UIViewController {
             textTranslatedTextView.text = nil
         }
     }
+    //Method to set placeholder into the text view
+    private func setPlaceholderTextView() {
+        textTranslatedTextView.text = "To: English"
+        textTranslatedTextView.textColor = UIColor.lightGray
+    }
 }
 //Extension UITextFieldDelegate
 extension TranslationViewController: UITextFieldDelegate {
@@ -65,8 +72,14 @@ extension TranslationViewController: UITextFieldDelegate {
             translationButton.isEnabled = true
         } else {
             translationButton.isEnabled = false
-            clearTranslatedText()
+            textTranslatedTextView.text = "To: English"
+            textTranslatedTextView.textColor = UIColor.lightGray
         }
     }
 }
+
+
+
+
+
 
