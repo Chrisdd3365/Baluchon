@@ -22,23 +22,53 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="KCH-Lw-u27">
                                 <rect key="frame" x="70" y="194" width="180" height="180"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="KCH-Lw-u27" secondAttribute="height" multiplier="1:1" id="dAG-6F-R3H"/>
                                     <constraint firstAttribute="width" secondItem="KCH-Lw-u27" secondAttribute="height" multiplier="1:1" id="fBt-DH-N22"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="dAG-6F-R3H"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="dAG-6F-R3H"/>
+                                        <exclude reference="fBt-DH-N22"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="KCH-Lw-u27" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="01A-jn-2v4"/>
+                            <constraint firstItem="KCH-Lw-u27" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="7Fa-c4-Nqi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KCH-Lw-u27" secondAttribute="trailing" constant="70" id="HB0-R0-qWX"/>
                             <constraint firstItem="KCH-Lw-u27" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="K4h-aY-bD5"/>
                             <constraint firstItem="KCH-Lw-u27" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Vrt-MX-REb"/>
+                            <constraint firstItem="KCH-Lw-u27" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="l3S-8z-cWD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7Fa-c4-Nqi"/>
+                                <exclude reference="l3S-8z-cWD"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="HB0-R0-qWX"/>
+                                <exclude reference="01A-jn-2v4"/>
+                                <include reference="7Fa-c4-Nqi"/>
+                                <exclude reference="K4h-aY-bD5"/>
+                                <exclude reference="Vrt-MX-REb"/>
+                                <include reference="l3S-8z-cWD"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.816901408450704" y="375"/>
         </scene>
     </scenes>
     <resources>
