@@ -16,7 +16,7 @@ class CurrencyChangeViewController: UIViewController {
     @IBOutlet weak var myConvertedValueLabel: UILabel!
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+
     //MARK: - Properties
     private var selectedCurrency: Double = 0
     let currencyChangeService = CurrencyChangeService()
@@ -74,7 +74,7 @@ class CurrencyChangeViewController: UIViewController {
     private func createCurrencyPicker() {
         let currencyPicker = UIPickerView()
         currencyPicker.delegate = self
-        currencyPicker.backgroundColor = .black
+        currencyPicker.backgroundColor = .white
         myCurrencyTextField.inputView = currencyPicker
     }
     //Method to delegate from the UITextFieldDelegate
@@ -116,7 +116,7 @@ extension CurrencyChangeViewController: UIPickerViewDelegate, UIPickerViewDataSo
         } else {
             label = UILabel()
         }
-        label.textColor = .white
+        label.textColor = .black
         label.textAlignment = .center
         label.font = UIFont(name: "Helvetica Neue", size: 17)
         label.text = currencyChangeService.currencies[row]
@@ -134,6 +134,14 @@ extension CurrencyChangeViewController: UITextFieldDelegate {
         }
     }
 }
+
+
+
+
+
+
+
+
 
 
 
