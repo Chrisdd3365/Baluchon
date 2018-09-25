@@ -27,22 +27,6 @@ class CurrencyChangeServiceTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetCurrencyChangeShouldGetFailedCallback() {
-        // Given
-        let currencyChangeService = CurrencyChangeService(
-            currencySession: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
-        
-        // When
-        let expectation = XCTestExpectation(description: "Wait for queue change.")
-        currencyChangeService.getCurrencyChange { (success, currency) in
-            // Then
-            XCTAssertFalse(success)
-            XCTAssertNil(currency)
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
     func testGetCurrencyChangeShouldGetFailedCallbackIfNoData() {
         // Given
         let currencyChangeService = CurrencyChangeService(

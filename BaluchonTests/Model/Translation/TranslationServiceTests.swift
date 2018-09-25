@@ -27,22 +27,6 @@ class TranslationServiceTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func testGetTranslationShouldGetFailedCallback() {
-        // Given
-        let translationService = TranslationService(
-            translationSession: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
-
-        // When
-        let expectation = XCTestExpectation(description: "Wait for queue change.")
-        translationService.getTranslation(text: "salut") { (success, translation) in
-            // Then
-            XCTAssertFalse(success)
-            XCTAssertNil(translation)
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 0.01)
-    }
-
     func testGetTranslationChangeShouldGetFailedCallbackIfNoData() {
         // Given
         let translationService = TranslationService(

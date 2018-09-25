@@ -46,11 +46,11 @@ class WeatherService {
                     callback(false, nil)
                     return
                 }
-                guard let weatherForeignerResponseJSON = try? JSONDecoder().decode(Weather.self, from: data) else {
+                guard let weatherResponseJSON = try? JSONDecoder().decode(Weather.self, from: data) else {
                     callback(false, nil)
                     return
                 }
-                callback(true, weatherForeignerResponseJSON)
+                callback(true, weatherResponseJSON)
             }
         }
         task?.resume()

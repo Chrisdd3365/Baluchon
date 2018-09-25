@@ -23,7 +23,6 @@ class TranslationViewController: UIViewController {
         super.viewDidLoad()
         setupBehavior()
         setPlaceholderTextView()
-        //textFieldDelegate()
     }
     
     //MARK: - Action
@@ -45,9 +44,11 @@ class TranslationViewController: UIViewController {
             }
         }
     }
+    //Method to handle setup behavior of textToTranslateTextField
     private func setupBehavior() {
         textToTranslateTextField.addTarget(self, action: #selector(textToTranslateTextFieldDidChange), for: .editingChanged)
     }
+    //Method to handle isEnabled property of translationButton when textToTranslateTextField is empty
     @objc func textToTranslateTextFieldDidChange() {
         guard let text = textToTranslateTextField.text, !text.isEmpty else {
             translationButton.isEnabled = false
@@ -56,17 +57,9 @@ class TranslationViewController: UIViewController {
         }
         translationButton.isEnabled = true
     }
-    
-    
-    
     //Method to dismiss keyboard from UITextView
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
-    }
-    //Method to delegate from UITextFieldDelegate
-    private func textFieldDelegate() {
-        textToTranslateTextField.delegate = self
-        translationButton.isEnabled = false
     }
     //Method to set placeholder into the text view
     private func setPlaceholderTextView() {
@@ -74,18 +67,7 @@ class TranslationViewController: UIViewController {
         textTranslatedTextView.textColor = UIColor.lightGray
     }
 }
-//Extension UITextFieldDelegate
-extension TranslationViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textToTranslateTextField.hasText {
-            translationButton.isEnabled = true
-        } else {
-            translationButton.isEnabled = false
-            textTranslatedTextView.text = "To: English"
-            textTranslatedTextView.textColor = UIColor.lightGray
-        }
-    }
-}
+
 
 
 

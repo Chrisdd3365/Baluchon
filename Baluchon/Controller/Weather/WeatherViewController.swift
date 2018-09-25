@@ -63,11 +63,6 @@ class WeatherViewController: UIViewController {
         foreignerCityNameLabel.text = "NEW YORK"
         localCityNameLabel.text = "PARIS"
     }
-    private func updateTempLabel(weatherTemp: Weather) {
-        foreignerTemperatureLabel.text = weatherTemp.query.results.channel.item.condition.temp + "°C"
-        localTemperatureLabel.text = weatherTemp.query.results.channel.item.condition.temp + "°C"
-    }
-
     //Method to update New York temp label
     private func updateForeignerTempLabel(weatherTemp: Weather) {
         foreignerTemperatureLabel.text = weatherTemp.query.results.channel.item.condition.temp + "°C"

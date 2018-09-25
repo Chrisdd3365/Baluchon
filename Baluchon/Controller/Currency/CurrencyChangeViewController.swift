@@ -37,7 +37,7 @@ class CurrencyChangeViewController: UIViewController {
 
     //MARK: - Methods
     //Method to get the converted value
-    @objc private func convertValue() {
+    private func convertValue() {
         if myValueTextField.text != "" {
             var total: Double = 0
             guard let valueTextField = myValueTextField.text else { return }
