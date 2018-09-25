@@ -34,12 +34,6 @@ struct WeatherConditions: Decodable {
     let temp: String
 }
 
-struct WeatherCodeAndTemp {
-    var newYorkTemp: String
-    var newYorkCode: String
-    var parisTemp: String
-    var parisCode: String
-}
 
 
 

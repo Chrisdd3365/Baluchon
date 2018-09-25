@@ -18,12 +18,10 @@ class WeatherService {
     
     //MARK: - Properties
     var task: URLSessionDataTask?
-    private var weatherForeignerSession: URLSession
-    private var weatherLocalSession: URLSession
+    private var weatherSession: URLSession
     
-    init(weatherForeignerSession: URLSession = URLSession(configuration: .default), weatherLocalSession: URLSession = URLSession(configuration: .default)) {
-        self.weatherForeignerSession = weatherForeignerSession
-        self.weatherLocalSession = weatherLocalSession
+    init(weatherSession: URLSession = URLSession(configuration: .default)) {
+        self.weatherSession = weatherSession
     }
     
     //MARK: - Methods
@@ -35,10 +33,10 @@ class WeatherService {
         return urlWeather
     }
     //Method to get the foreigner's city weather from the Yahoo Weather API with a GET request
-    func getForeignerWeather(city: City, callback: @escaping (Bool, WeatherCodeAndTemp?) -> Void) {
+    func getWeather(city: City, callback: @escaping (Bool, Weather?) -> Void) {
         guard let url = URL(string: urlWeather(city: city)) else { return }
         task?.cancel()
-        task = weatherForeignerSession.dataTask(with: url) { data, response, error in
+        task = weatherSession.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callback(false, nil)
@@ -52,42 +50,7 @@ class WeatherService {
                     callback(false, nil)
                     return
                 }
-                let foreignerCode = weatherForeignerResponseJSON.query.results.channel.item.condition.code
-                let foreignerTemp = weatherForeignerResponseJSON.query.results.channel.item.condition.temp
-                
-                self.getLocalWeather(city: city, completionHandler: { (success, data) in
-                    guard let localWeather = data else {
-                        callback(false, nil)
-                        return
-                    }
-                    let localCode = localWeather.query.results.channel.item.condition.code
-                    let localTemp = localWeather.query.results.channel.item.condition.temp
-                    let weatherJSON = WeatherCodeAndTemp(newYorkTemp: foreignerTemp, newYorkCode: foreignerCode, parisTemp: localTemp, parisCode: localCode)
-                    callback (true, weatherJSON)
-                })
-            }
-        }
-        task?.resume()
-    }
-    //Method to get the local's city weather from the Yahoo Weather API with a GET request
-    func getLocalWeather(city: City, completionHandler: @escaping ((Bool, Weather?) -> Void)) {
-        guard let url = URL(string: urlWeather(city: .paris)) else { return }
-        task?.cancel()
-        task = weatherLocalSession.dataTask(with: url) { data, response, error in
-            DispatchQueue.main.async {
-                guard let data = data, error == nil else {
-                    completionHandler(false, nil)
-                    return
-                }
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    completionHandler(false, nil)
-                    return
-                }
-                guard let weatherLocalResponseJSON = try? JSONDecoder().decode(Weather.self, from: data) else {
-                    completionHandler(false, nil)
-                    return
-                }
-                completionHandler(true, weatherLocalResponseJSON)
+                callback(true, weatherForeignerResponseJSON)
             }
         }
         task?.resume()

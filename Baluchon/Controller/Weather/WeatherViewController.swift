@@ -27,21 +27,34 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateCityNameLabel()
-        showWeather()
+        showLocalWeather()
     }
     
     //MARK: - Methods
-    //Method to call the getForeignerWeather method from WeatherServivce
-    private func showWeather() {
-        weatherService.getForeignerWeather(city: .newYork) { (success, weather) in
-            self.toggleActivityIndicator(shown: true)
+    //Method to call the getForeignerWeather method from WeatherServivce and retrieve data of New York
+    private func showForeignerWeather() {
+        weatherService.getWeather(city: .newYork) { (success, weather) in
+            self.toggleForeignerActivityIndicator(shown: true)
             if success, let weather = weather {
-                self.toggleActivityIndicator(shown: false)
-                self.updateTempLabel(weatherTemp: weather)
+                self.toggleForeignerActivityIndicator(shown: false)
+                self.updateForeignerTempLabel(weatherTemp: weather)
                 self.updateForeignerWeatherImage(weatherCode: weather)
+            } else {
+                self.showAlert(title: "Error", message: "Weather's data for New York download failed!")
+            }
+        }
+    }
+    //Method to call the getWeather method from WeatherService and retrieving data of Paris
+    private func showLocalWeather() {
+        weatherService.getWeather(city: .paris) { (success, weather) in
+            self.toggleLocalActivityIndicator(shown: true)
+            if success, let weather = weather {
+                self.showForeignerWeather()
+                self.toggleLocalActivityIndicator(shown: false)
+                self.updateLocalTempLabel(weatherTemp: weather)
                 self.updateLocalWeatherImage(weatherCode: weather)
             } else {
-                self.showAlert(title: "Error", message: "Weather's data download failed!")
+                self.showAlert(title: "Error", message: "Weather's data for Paris download failed!")
             }
         }
     }
@@ -50,28 +63,40 @@ class WeatherViewController: UIViewController {
         foreignerCityNameLabel.text = "NEW YORK"
         localCityNameLabel.text = "PARIS"
     }
-    //Method to update temp labels
-    private func updateTempLabel(weatherTemp: WeatherCodeAndTemp) {
-        foreignerTemperatureLabel.text = weatherTemp.newYorkTemp + "°C"
-        localTemperatureLabel.text = weatherTemp.parisTemp + "°C"
+    private func updateTempLabel(weatherTemp: Weather) {
+        foreignerTemperatureLabel.text = weatherTemp.query.results.channel.item.condition.temp + "°C"
+        localTemperatureLabel.text = weatherTemp.query.results.channel.item.condition.temp + "°C"
     }
+
+    //Method to update New York temp label
+    private func updateForeignerTempLabel(weatherTemp: Weather) {
+        foreignerTemperatureLabel.text = weatherTemp.query.results.channel.item.condition.temp + "°C"
+    }
+    //Method to update Paris temp label
+    private func updateLocalTempLabel(weatherTemp: Weather) {
+        localTemperatureLabel.text = weatherTemp.query.results.channel.item.condition.temp + "°C"
+    }
+
     //Method to update foreigner weather image with a forecast icon
-    private func updateForeignerWeatherImage(weatherCode: WeatherCodeAndTemp) {
-        if let iconForecast = WeatherCode.convertYahooCodeIntoIconForecast(code: weatherCode.newYorkCode) {
+    private func updateForeignerWeatherImage(weatherCode: Weather) {
+        if let iconForecast = WeatherCode.convertYahooCodeIntoIconForecast(code: weatherCode.query.results.channel.item.condition.code) {
             let foreignerForecastImage = UIImage(named: iconForecast)
             foreignerWeatherImage.image = foreignerForecastImage
         }
     }
     //Method to update local weather image with a forecast icon
-    private func updateLocalWeatherImage(weatherCode: WeatherCodeAndTemp) {
-        if let iconForecast = WeatherCode.convertYahooCodeIntoIconForecast(code: weatherCode.parisCode) {
+    private func updateLocalWeatherImage(weatherCode: Weather) {
+        if let iconForecast = WeatherCode.convertYahooCodeIntoIconForecast(code: weatherCode.query.results.channel.item.condition.code) {
             let localForecastImage = UIImage(named: iconForecast)
             localWeatherImage.image = localForecastImage
         }
     }
-    //Method to toggle activity indicator when datas are currently downloading
-    private func toggleActivityIndicator(shown: Bool) {
+    //Method to toggle activity indicator when datas for New York are currently downloading
+    private func toggleForeignerActivityIndicator(shown: Bool) {
         foreignerActivityIndicator.isHidden = !shown
+    }
+    //Method to toggle activity indicator when datas for Paris are currently downloading
+    private func toggleLocalActivityIndicator(shown: Bool) {
         localActivityIndicator.isHidden = !shown
     }
 }

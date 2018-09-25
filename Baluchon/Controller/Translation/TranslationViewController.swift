@@ -21,8 +21,9 @@ class TranslationViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBehavior()
         setPlaceholderTextView()
-        textFieldDelegate()
+        //textFieldDelegate()
     }
     
     //MARK: - Action
@@ -44,6 +45,20 @@ class TranslationViewController: UIViewController {
             }
         }
     }
+    private func setupBehavior() {
+        textToTranslateTextField.addTarget(self, action: #selector(textToTranslateTextFieldDidChange), for: .editingChanged)
+    }
+    @objc func textToTranslateTextFieldDidChange() {
+        guard let text = textToTranslateTextField.text, !text.isEmpty else {
+            translationButton.isEnabled = false
+           setPlaceholderTextView()
+            return
+        }
+        translationButton.isEnabled = true
+    }
+    
+    
+    
     //Method to dismiss keyboard from UITextView
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -52,12 +67,6 @@ class TranslationViewController: UIViewController {
     private func textFieldDelegate() {
         textToTranslateTextField.delegate = self
         translationButton.isEnabled = false
-    }
-    //Method to clear the translated text when the text field is empty
-    private func clearTranslatedText() {
-        if textToTranslateTextField.text == ""  {
-            textTranslatedTextView.text = nil
-        }
     }
     //Method to set placeholder into the text view
     private func setPlaceholderTextView() {

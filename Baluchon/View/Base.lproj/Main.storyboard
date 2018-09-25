@@ -44,7 +44,7 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3g-Zb-9QI">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3g-Zb-9QI">
                                         <rect key="frame" x="0.0" y="45" width="300" height="50"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <state key="normal" title="TRANSLATE" image="translateImageButton">
@@ -160,7 +160,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ASV-x6-EXP">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="249.5"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newYork" translatesAutoresizingMaskIntoConstraints="NO" id="ahL-ws-NIA">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newYork" translatesAutoresizingMaskIntoConstraints="NO" id="ahL-ws-NIA">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="249.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awt-Mo-M26">
@@ -206,7 +206,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DKM-kQ-3TG">
                                         <rect key="frame" x="0.0" y="249.5" width="320" height="249.5"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paris" translatesAutoresizingMaskIntoConstraints="NO" id="JPR-ed-BYn">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paris" translatesAutoresizingMaskIntoConstraints="NO" id="JPR-ed-BYn">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="249.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckk-iE-h5z">
@@ -317,7 +317,7 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Y4K-pm-wTO">
                                 <rect key="frame" x="150" y="204.5" width="20" height="20"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1D-BM-rIH">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1D-BM-rIH">
                                 <rect key="frame" x="93.5" y="234.5" width="133" height="50"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title=" CONVERT" image="convertImageButton">
@@ -362,9 +362,9 @@
                                 <exclude reference="ErP-Bl-4Q5"/>
                                 <exclude reference="Fl6-WR-C5M"/>
                                 <exclude reference="e2R-zW-KDb"/>
+                                <exclude reference="gn8-9k-xaF"/>
                                 <exclude reference="QlY-71-gK6"/>
                                 <exclude reference="dwG-Ap-KCx"/>
-                                <exclude reference="gn8-9k-xaF"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -376,14 +376,14 @@
                                 <include reference="Fl6-WR-C5M"/>
                                 <exclude reference="Lht-TW-3R5"/>
                                 <include reference="e2R-zW-KDb"/>
-                                <include reference="QlY-71-gK6"/>
-                                <exclude reference="bBK-ur-mJh"/>
-                                <include reference="dwG-Ap-KCx"/>
                                 <exclude reference="T2s-kl-5aE"/>
                                 <exclude reference="Wgy-q3-bHe"/>
                                 <exclude reference="cdz-V8-6Ut"/>
                                 <include reference="gn8-9k-xaF"/>
                                 <exclude reference="zc4-Eq-OpT"/>
+                                <include reference="QlY-71-gK6"/>
+                                <exclude reference="bBK-ur-mJh"/>
+                                <include reference="dwG-Ap-KCx"/>
                             </mask>
                         </variation>
                     </view>

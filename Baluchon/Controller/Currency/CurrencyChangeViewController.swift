@@ -37,7 +37,7 @@ class CurrencyChangeViewController: UIViewController {
 
     //MARK: - Methods
     //Method to get the converted value
-    private func convertValue() {
+    @objc private func convertValue() {
         if myValueTextField.text != "" {
             var total: Double = 0
             guard let valueTextField = myValueTextField.text else { return }
@@ -64,7 +64,6 @@ class CurrencyChangeViewController: UIViewController {
     //Method to toggle activity indicator when datas are currently downloading
     private func toggleActivityIndicator(shown: Bool) {
         activityIndicator.isHidden = !shown
-        convertButton.isHidden = shown
     }
     //Method to activate the number pad when taping on the value text field
     private func createNumberPad() {
