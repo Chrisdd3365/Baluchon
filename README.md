@@ -6,7 +6,7 @@
 
 Baluchon is an app developed on Swift 4 for travel purposes. This app has 3 differents functionalities:
 
-- Currency change: to allow the user to convert a value based in EUR into differents currencies
+- Currency Change: to allow the user to convert a value based in EUR into differents currencies
 
 - Translation: to allow the user to translate a word or a sentence or even a text from french to english
 
@@ -32,7 +32,7 @@ Baluchon is a responsive app in portrait mode but I decided to implement a respo
 
 ## Running the tests:
 
-Testing Model with Unit Test by testing API request with Double Fake URL Session and Fake Response Data 
+Testing Model with Unit Test by testing API request with Double Fake URL Session and Fake Response Data. 
 
 
 ## Requirements:
