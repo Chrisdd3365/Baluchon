@@ -323,9 +323,11 @@
 				TargetAttributes = {
 					956AA52B2119DA44005CB9C1 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 					9598CF60212D7C0600AD8E02 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 956AA52B2119DA44005CB9C1;
 					};
 				};
@@ -563,7 +565,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.christophedurand.Baluchon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -581,7 +583,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.christophedurand.Baluchon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -600,7 +602,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.christophedurand.BaluchonTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Baluchon.app/Baluchon";
 			};
@@ -620,7 +622,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.christophedurand.BaluchonTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Baluchon.app/Baluchon";
 			};
