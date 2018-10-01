@@ -11,9 +11,10 @@ import UIKit
 class CurrencyChangeViewController: UIViewController {
     
     //MARK: - Outlets
-    @IBOutlet weak var myValueTextField: UITextField!
-    @IBOutlet weak var myCurrencyTextField: UITextField!
-    @IBOutlet weak var myConvertedValueLabel: UILabel!
+
+    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var currencyTextField: UITextField!
+    @IBOutlet weak var convertedAmountLabel: UILabel!
     @IBOutlet weak var convertButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
@@ -38,12 +39,12 @@ class CurrencyChangeViewController: UIViewController {
     //MARK: - Methods
     //Method to get the converted value
     private func convertValue() {
-        if myValueTextField.text != "" {
+        if amountTextField.text != "" {
             var total: Double = 0
-            guard let valueTextField = myValueTextField.text else { return }
-            guard let result = Double(valueTextField) else { return }
+            guard let amountTextField = amountTextField.text else { return }
+            guard let result = Double(amountTextField) else { return }
             total = result * selectedCurrency
-            myConvertedValueLabel.text = String(format: "%.2f", total)
+            convertedAmountLabel.text = String(format: "%.2f", total)
         }
     }
     //Method to call the getCurrencyChange method from CurrencyChangeService
@@ -67,25 +68,25 @@ class CurrencyChangeViewController: UIViewController {
     }
     //Method to activate the number pad when taping on the value text field
     private func createNumberPad() {
-        myValueTextField.keyboardType = UIKeyboardType.numberPad
+        amountTextField.keyboardType = UIKeyboardType.numberPad
     }
     //Method to create a picker view programmatically
     private func createCurrencyPicker() {
         let currencyPicker = UIPickerView()
         currencyPicker.delegate = self
         currencyPicker.backgroundColor = .white
-        myCurrencyTextField.inputView = currencyPicker
+        currencyTextField.inputView = currencyPicker
     }
     //Method to delegate from the UITextFieldDelegate
     private func textFieldDelegate() {
-        myValueTextField.delegate = self
-        myCurrencyTextField.delegate = self
+        amountTextField.delegate = self
+        currencyTextField.delegate = self
         convertButton.isEnabled = false
     }
     //Method to clear the converted value label when the text fields are empties
     private func clearConvertedValueLabel() {
-        if myValueTextField.text == "" || myCurrencyTextField.text == "" {
-            myConvertedValueLabel.text = nil
+        if amountTextField.text == "" || currencyTextField.text == "" {
+            convertedAmountLabel.text = nil
         }
     }
 }
@@ -105,7 +106,7 @@ extension CurrencyChangeViewController: UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCurrency = currencyChangeService.rate[row]
-        myCurrencyTextField.text = currencyChangeService.currencies[row]
+        currencyTextField.text = currencyChangeService.currencies[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -125,7 +126,7 @@ extension CurrencyChangeViewController: UIPickerViewDelegate, UIPickerViewDataSo
 //Extension UITextFieldDelegate
 extension CurrencyChangeViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if myValueTextField.hasText && myCurrencyTextField.hasText {
+        if amountTextField.hasText && currencyTextField.hasText {
             convertButton.isEnabled = true
         } else {
             convertButton.isEnabled = false

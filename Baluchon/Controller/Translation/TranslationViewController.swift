@@ -52,7 +52,7 @@ class TranslationViewController: UIViewController {
     @objc func textToTranslateTextFieldDidChange() {
         guard let text = textToTranslateTextField.text, !text.isEmpty else {
             translationButton.isEnabled = false
-           setPlaceholderTextView()
+            setPlaceholderTextView()
             return
         }
         translationButton.isEnabled = true
