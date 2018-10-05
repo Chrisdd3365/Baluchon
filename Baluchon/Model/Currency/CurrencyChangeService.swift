@@ -6,7 +6,7 @@
 //  Copyright © 2018 Christophe DURAND. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class CurrencyChangeService {
     
