@@ -11,7 +11,6 @@ import UIKit
 class CurrencyChangeViewController: UIViewController {
     
     //MARK: - Outlets
-
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var currencyTextField: UITextField!
     @IBOutlet weak var convertedAmountLabel: UILabel!
