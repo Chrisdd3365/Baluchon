@@ -1,4 +1,4 @@
-# Project 9 of DA IOS Path - Openclassroom
+# Project 9 of DA IOS Path - Openclassrooms
 
 # Baluchon
 
